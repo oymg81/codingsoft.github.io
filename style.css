@@ -1,0 +1,136 @@
+/* Rreset global o CSS reset*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fondo azul cobalto para logo */
+.logo-section {
+    background-color: #0047ab;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Sección de bienvenida con fondo platinado */
+.welcome-section {
+    background-color: #eaf1f8;
+    padding: 30px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+
+/* Estilo del logo */
+.logo {
+    display: block;
+    /* Permite usar márgenes automáticos */
+    margin: 0 auto;
+    /* Centra la imagen horizontalmente */
+    /*max-width: 150px;  */
+    /* Limita el ancho máximo a 150px */
+    max-width: 600px;
+    /* evita que se vea demasiado grande en pantallas grandes */
+    height: auto;
+    /* Mantiene la proporción original */
+}
+
+/* Encabezado principal del sitio */
+header {
+    text-align: center;
+    /* Centra todo el contenido del header */
+    padding: 20px;
+    /* Espaciado interno alrededor */
+}
+
+/* Contenedor de botones (en fila) */
+.button-group {
+    display: flex;
+    /* Coloca los botones uno al lado del otro */
+    justify-content: center;
+    /* Centra el grupo de botones horizontalmente */
+    gap: 20px;
+    /* Espacio entre cada botón */
+    margin-top: 10px;
+    /* Espacio encima del grupo */
+}
+
+/* Estilo general de los botones */
+.button-group button {
+    padding: 10px 20px;
+    /* Espaciado interno del botón */
+    font-size: 16px;
+    /* Tamaño del texto */
+    cursor: pointer;
+    /* Muestra el cursor de mano al pasar encima */
+    background-color: #0047ab;
+    /* Azul fuerte */
+    color: white;
+    /* Texto blanco */
+    border: none;
+    /* Sin borde */
+    border-radius: 5px;
+    /* Esquinas redondeadas */
+}
+
+/* Estilo al pasar el mouse sobre los botones */
+.button-group button:hover {
+    background-color: #74acf4;
+    /* Azul más oscuro al hacer hover */
+}
+
+
+body {
+    /* background-color: #888887; */
+    background-color: #eaf1f8; 
+}
+
+/* Contenedor del dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Botón del dropdown */
+.dropbtn {
+  background-color: #0047ab;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Cambia el color al pasar el mouse */
+.dropbtn:hover {
+  background-color: #4688dd;
+}
+
+/* Contenido del dropdown oculto por defecto */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 180px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links dentro del dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Hover sobre los links */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Mostrar el menú al pasar el mouse */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
