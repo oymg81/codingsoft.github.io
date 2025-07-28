@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- La página se adapta automáticamente y se ve correctamente en distintos dispositivos.-->
+    <meta name="viewport" content="width=device-width">
+    <title>CodingSoft Technology</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- Seccion del logo con fondo de cobalto-->
+    <div class="logo-section">
+        <img src="Logo.png" alt="CodingSoft Logo" class="logo" />
+    </div>
+
+   <header class="welcome-section">
+  <h1>Welcome to CodingSoft Technology</h1>
+
+  <div class="button-group">
+    
+    <div id="aboutMessage" class="message-box"></div>
+    <button id="aboutBtn">About</button>
+
+    <div class="dropdown">
+      <button class="dropbtn">Services &#9660;</button>
+      <div class="dropdown-content">
+        <a href="#">Web Development</a>
+        <a href="#">Automation</a>
+        <a href="#">Software Development</a>
+      </div>
+    </div>
+
+    <button>Contact</button>
+  </div>
+</header>
+
+
+    <p> At CodingSoft, we specialize in building modern web solutions tailored to solve real-world problems. Founded by
+        Oscar Mochizaki, a bilingual Computer Science senior with hands-on experience in full-stack development, systems
+        programming, and API integration, our mission is to connect innovation with user-centered design.
+
+        Our current flagship project, MyPobox, is a smart logistics platform developed in WordPress and PHP that
+        seamlessly integrates with the Linbis API to automate the end-to-end package and shipping process — from
+        customer registration and inventory management to real-time shipment tracking.
+
+        With deep technical expertise in Java, Python, Node.js, RESTful APIs, and cloud-based infrastructure, we deliver
+        efficient, secure, and scalable web applications for clients seeking transformation through technology.
+
+        CodingSoft is not just about code — it's about delivering clarity, speed, and intelligent workflow automation.
+    </p>
+
+    <script>
+  document.getElementById("aboutBtn").addEventListener("click", function () {
+  document.getElementById("aboutMessage").innerHTML = `
+      <p>
+        Hello! I'm Oscar Mochizaki, founder of CodingSoft. I’m passionate about creating modern, scalable web solutions.
+        With experience in full-stack development, APIs, and cloud infrastructure, I help turn ideas into efficient technology.
+      </p>
+    `;
+  });
+</script>
+
+
+
+    
+
+</body>
+
+</html>
