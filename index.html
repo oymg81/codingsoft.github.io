@@ -54,14 +54,26 @@
 
 <script>
   document.getElementById("aboutBtn").addEventListener("click", function () {
-    document.getElementById("aboutMessage").innerHTML = `
-      <p>
-        Hello! I'm Oscar Mochizaki, founder of CodingSoft. I’m passionate about creating modern, scalable web solutions.
-        With experience in full-stack development, APIs, and cloud infrastructure, I help turn ideas into efficient technology.
-      </p>
-    `;
-  });
+  const messageBox = document.getElementById("aboutMessage");
+
+  // Mostrar el mensaje
+  messageBox.innerHTML = `
+    <p>
+      Hello! I'm Oscar Mochizaki, founder of CodingSoft. I’m passionate about creating modern, scalable web solutions.
+      With experience in full-stack development, APIs, and cloud infrastructure, I help turn ideas into efficient technology.
+    </p>
+  `;
+
+  // Esperar 5 segundos y luego borrar el contenido
+  setTimeout(() => {
+    messageBox.innerHTML = "";
+  }, 5000); // 5000 milisegundos = 5 segundos
+});
+
 </script>
+
+<script src="script.js"></script>
+
 
 </body>
 
