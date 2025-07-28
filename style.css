@@ -133,10 +133,12 @@ body {
 /* Mostrar el menú al pasar el mouse */
 .dropdown:hover .dropdown-content {
   display: block;
-<<<<<<< HEAD
+/* Mostrar el menú al pasar el mouse */
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
-/* Mensaje de boton About Me*/
+/* Mensaje de boton About Me */
 .message-box {
   margin-top: 20px;
   padding: 15px;
@@ -148,6 +150,6 @@ body {
   margin-right: auto;
   text-align: center;
   border-radius: 5px;
-=======
->>>>>>> dc42656fca732bc4c6e2cc69e097b28d98045644
+}
+
 }
