@@ -1,4 +1,4 @@
-xx<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -39,7 +39,7 @@ xx<!DOCTYPE html>
 
 
     <p> At CodingSoft, we specialize in building modern web solutions tailored to solve real-world problems. Founded by
-        Oscar MG, a bilingual Computer Science senior with hands-on experience in full-stack development, systems
+        Oscar Mochizaki, a bilingual Computer Science senior with hands-on experience in full-stack development, systems
         programming, and API integration, our mission is to connect innovation with user-centered design.
 
         Our current flagship project, MyPobox, is a smart logistics platform developed in WordPress and PHP that
@@ -54,23 +54,25 @@ xx<!DOCTYPE html>
 
 <script>
   document.getElementById("aboutBtn").addEventListener("click", function () {
-  const messageBox = document.getElementById("aboutMessage");
+    const messageBox = document.getElementById("aboutMessage");
 
-  // Mostrar el mensaje
-  messageBox.innerHTML = `
-    <p>
-      Hello! I'm Oscar Mochizaki, founder of CodingSoft. I’m passionate about creating modern, scalable web solutions.
-      With experience in full-stack development, APIs, and cloud infrastructure, I help turn ideas into efficient technology.
-    </p>
-  `;
+    // Mostrar el mensaje y activar el display
+    messageBox.style.display = "block";
+    messageBox.innerHTML = `
+      <p>
+        Hello! I'm Oscar Mochizaki, founder of CodingSoft. I’m passionate about creating modern, scalable web solutions.
+        With experience in full-stack development, APIs, and cloud infrastructure, I help turn ideas into efficient technology.
+      </p>
+    `;
 
-  // Esperar 5 segundos y luego borrar el contenido
-  setTimeout(() => {
-    messageBox.innerHTML = "";
-  }, 5000); // 5000 milisegundos = 5 segundos
-});
-
+    // Ocultar después de 5 segundos
+    setTimeout(() => {
+      messageBox.innerHTML = "";
+      messageBox.style.display = "none";
+    }, 5000);
+  });
 </script>
+
 
 <script src="script.js"></script>
 
@@ -78,4 +80,3 @@ xx<!DOCTYPE html>
 </body>
 
 </html>
-
