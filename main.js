@@ -11,13 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. Scroll Reveal Animation using IntersectionObserver
     const revealElements = document.querySelectorAll('.reveal');
-    
+
     const revealOptions = {
         threshold: 0.15,
         rootMargin: "0px 0px -50px 0px"
     };
 
-    const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+    const revealOnScroll = new IntersectionObserver(function (entries, observer) {
         entries.forEach(entry => {
             if (!entry.isIntersecting) {
                 return;
@@ -34,23 +34,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. FAQ Accordion
     const accordionItems = document.querySelectorAll('.accordion-item');
-    
+
     accordionItems.forEach(item => {
         const header = item.querySelector('.accordion-header');
-        
+
         header.addEventListener('click', () => {
             const currentlyActive = document.querySelector('.accordion-item.active');
-            
+
             if (currentlyActive && currentlyActive !== item) {
                 currentlyActive.classList.remove('active');
                 currentlyActive.querySelector('.accordion-content').style.maxHeight = null;
                 currentlyActive.querySelector('.icon').textContent = '+';
             }
-            
+
             item.classList.toggle('active');
             const content = item.querySelector('.accordion-content');
             const icon = item.querySelector('.icon');
-            
+
             if (item.classList.contains('active')) {
                 content.style.maxHeight = content.scrollHeight + "px";
                 icon.textContent = '-';
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const quoteText = document.querySelector('.quote-text');
     const authorName = document.querySelector('.author-info h4');
     const authorCompany = document.querySelector('.author-info p');
-    
+
     const testimonials = [
         {
             text: `"Partnering with your team transformed our business. Their dedication, technical expertise, and creative solutions were beyond our expectations."`,
@@ -85,23 +85,23 @@ document.addEventListener('DOMContentLoaded', () => {
             company: "Apex Retail Group"
         }
     ];
-    
+
     let currentTestimonial = 0;
 
     function updateTestimonial() {
         quoteText.style.opacity = 0;
         authorName.style.opacity = 0;
         authorCompany.style.opacity = 0;
-        
+
         setTimeout(() => {
             quoteText.textContent = testimonials[currentTestimonial].text;
             authorName.textContent = testimonials[currentTestimonial].name;
             authorCompany.textContent = testimonials[currentTestimonial].company;
-            
+
             quoteText.style.opacity = 1;
             authorName.style.opacity = 1;
             authorCompany.style.opacity = 1;
-            
+
             quoteText.style.transition = 'opacity 0.3s ease';
             authorName.style.transition = 'opacity 0.3s ease';
             authorCompany.style.transition = 'opacity 0.3s ease';
@@ -124,17 +124,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const langToggleBtn = document.getElementById('lang-toggle');
     let currentLang = 'en';
 
+    const savedLang = localStorage.getItem('lang');
+
+    if (savedLang) {
+        setLanguage(savedLang);
+    }
+
     function setLanguage(lang) {
         currentLang = lang;
-        langToggleBtn.textContent = lang === 'en' ? 'ES' : 'EN';
-        
+
+        localStorage.setItem('lang', lang);
+
+        langToggleBtn.innerHTML = lang === 'en' ? '🇪🇸' : '🇺🇸';
+
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang][key]) {
                 el.textContent = translations[lang][key];
             }
         });
-
         // Testimonial translations mapping is a bit more complex,
         // we'll leave them in English for now or update the objects if we had them translated.
     }
