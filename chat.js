@@ -211,6 +211,10 @@ document.addEventListener('DOMContentLoaded', () => {
             chatInput.disabled = true;
             sendBtn.disabled = true;
             leadData.createdAt = new Date().toISOString();
+
+            console.log("Submitting lead...");
+            console.log(leadData);
+
             await submitLead(leadData);
             sendEmailNotification(leadData);
             addFinalButtons();
@@ -262,6 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     async function submitLead(data) {
+        console.log("Sending to Supabase...");
         console.log('Lead Data Collected:', data);
         localStorage.setItem('codingsoft_lead', JSON.stringify(data));
 
@@ -279,7 +284,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 ]);
 
-            if (error) throw error;
+            if (error) {
+                console.error("Supabase error:", error);
+                throw error;
+            }
             console.log('Successfully submitted lead to Supabase:', result);
         } catch (error) {
             console.error('Error submitting lead to Supabase:', error.message);
@@ -287,6 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function sendEmailNotification(data) {
+        console.log("Sending email...");
         const templateParams = {
             full_name: data.fullName,
             business_name: data.businessName,
