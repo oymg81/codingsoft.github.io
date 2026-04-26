@@ -3,80 +3,591 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- La página se adapta automáticamente y se ve correctamente en distintos dispositivos.-->
-    <meta name="viewport" content="width=device-width">
-    <title>CodingSoft Technology</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodingSoft | Smart Software Solutions</title>
+    <meta name="description"
+        content="We build business systems, not just websites. CodingSoft provides smart, scalable, and future-ready digital solutions.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="chat.css">
+    <style>
+        .right-nav-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .nav-lang-btn {
+            width: 64px;
+            height: 48px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            font-size: 0.95rem;
+        }
+
+        .nav-quote-btn {
+            height: 48px;
+            padding: 0 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            width: auto;
+        }
+
+        @media (max-width: 768px) {
+
+            .nav-lang-btn,
+            .nav-quote-btn {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
-
-    <!-- Seccion del logo con fondo de cobalto-->
-    <div class="logo-section">
-        <img src="Logo.png" alt="CodingSoft Logo" class="logo" />
+    <!-- Background Elements -->
+    <div class="bg-mesh">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
     </div>
 
-   <header class="welcome-section">
-  <h1>Welcome to CodingSoft Technology</h1>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="logo-icon">
+                    <circle cx="50" cy="50" r="45" fill="#0047FF" />
+                    <circle cx="30" cy="50" r="6" fill="#38BDF8" />
+                    <circle cx="40" cy="35" r="6" fill="#38BDF8" />
+                    <circle cx="60" cy="35" r="6" fill="#38BDF8" />
+                    <circle cx="70" cy="50" r="6" fill="#38BDF8" />
+                    <circle cx="60" cy="65" r="6" fill="#38BDF8" />
+                    <circle cx="40" cy="65" r="6" fill="#38BDF8" />
+                </svg>
+                <span class="logo-text chrome-text">CODINGSOFT</span>
+            </a>
 
-  <div class="button-group">
-<div id="aboutMessage" class="message-box"></div>
-<button id="aboutBtn">About</button>
+            <div class="nav-links">
+                <a href="#services" data-i18n="nav.services">Services</a>
+                <a href="#projects" data-i18n="nav.projects">Projects</a>
+                <a href="#why-us" data-i18n="nav.company">Company</a>
+            </div>
 
+            <div class="right-nav-actions">
+                <button id="lang-toggle" class="btn btn-outline nav-lang-btn">🇪🇸</button>
+                <a href="#contact" class="btn btn-primary nav-quote-btn" data-i18n="nav.cta">Get A Quotation</a>
+                <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
 
-    <div class="dropdown">
-      <button class="dropbtn">Services &#9660;</button>
-      <div class="dropdown-content">
-        <a href="#">Web Development</a>
-        <a href="#">Automation</a>
-        <a href="#">Software Development</a>
-      </div>
-    </div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title reveal">
+                    <span data-i18n="hero.title1">We Build Scalable Software & Business Systems</span><br><span
+                        data-i18n="hero.title2"> </span><span class="text-gradient" data-i18n="hero.title_gradient">Not
+                        Just Websites</span>
+                </h1>
+                <p class="hero-subtitle reveal delay-1" data-i18n="hero.subtitle">
+                    From websites to automation, APIs, and full platforms — CodingSoft turns ideas into real, working
+                    systems.
+                </p>
+                <div class="hero-actions reveal delay-2">
+                    <a href="#contact" class="btn btn-primary btn-lg glow" data-i18n="hero.cta">Contact Us</a>
+                </div>
+            </div>
 
-    <button>Contact</button>
-  </div>
-</header>
+            <!-- Floating Elements -->
+            <div class="floating-shape shape-1">
+                <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 0L93.3013 25V75L50 100L6.69873 75V25L50 0Z" stroke="url(#paint0_linear)"
+                        stroke-width="2" fill="rgba(0, 71, 255, 0.1)" />
+                    <defs>
+                        <linearGradient id="paint0_linear" x1="50" y1="0" x2="50" y2="100"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#38BDF8" />
+                            <stop offset="1" stop-color="#0047FF" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <div class="floating-shape shape-2">
+                <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="48" stroke="url(#paint1_linear)" stroke-width="4" fill="transparent" />
+                    <defs>
+                        <linearGradient id="paint1_linear" x1="0" y1="0" x2="100" y2="100"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#E81CFF" />
+                            <stop offset="1" stop-color="#0047FF" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+    </section>
 
+    <!-- Trusted By (Marquee) -->
+    <section class="trusted-by">
+        <div class="container">
+            <p class="text-center text-muted mb-4" data-i18n="trusted.title">Trusted By Leading Companies</p>
+            <div class="marquee-container">
+                <div class="marquee">
+                    <div class="marquee-content">
+                        <span><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2L2 7L12 12L22 7L12 2Z" />
+                                <path d="M2 17L12 22L22 17M2 12L12 17L22 12" />
+                            </svg> Luminous</span>
+                        <span><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <circle cx="12" cy="12" r="10" />
+                            </svg> Interlock</span>
+                        <span><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <rect x="3" y="3" width="18" height="18" rx="2" />
+                            </svg> FeatherDev</span>
+                        <span><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" />
+                                <path d="M8 12H16M12 8V16" />
+                            </svg> Alt+Shift</span>
+                        <span><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M4 4H20V20H4V4Z" />
+                            </svg> Sisyphus</span>
+                        <!-- Duplicate for infinite scroll -->
+                        <span><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2L2 7L12 12L22 7L12 2Z" />
+                                <path d="M2 17L12 22L22 17M2 12L12 17L22 12" />
+                            </svg> Luminous</span>
+                        <span><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <circle cx="12" cy="12" r="10" />
+                            </svg> Interlock</span>
+                        <span><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <rect x="3" y="3" width="18" height="18" rx="2" />
+                            </svg> FeatherDev</span>
+                        <span><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" />
+                                <path d="M8 12H16M12 8V16" />
+                            </svg> Alt+Shift</span>
+                        <span><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M4 4H20V20H4V4Z" />
+                            </svg> Sisyphus</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <p> At CodingSoft, we specialize in building modern web solutions tailored to solve real-world problems. Founded by
-        Oscar Mochizaki, a bilingual Computer Science senior with hands-on experience in full-stack development, systems
-        programming, and API integration, our mission is to connect innovation with user-centered design.
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <div>
+                    <h2 class="section-title" data-i18n="services.title">Our services</h2>
+                    <p class="section-subtitle" data-i18n="services.subtitle">Delivering high-quality solutions that
+                        empower businesses</p>
+                </div>
+                <a href="#" class="btn btn-outline" data-i18n="services.learn_more">Learn More</a>
+            </div>
 
-        Our current flagship project, MyPobox, is a smart logistics platform developed in WordPress and PHP that
-        seamlessly integrates with the Linbis API to automate the end-to-end package and shipping process — from
-        customer registration and inventory management to real-time shipment tracking.
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon-wrapper">
+                        <div class="icon-3d shape-pyramid"></div>
+                    </div>
+                    <h3 data-i18n="services.card1.title">Business Automation</h3>
+                    <p data-i18n="services.card1.desc">Streamline workflows and eliminate manual tasks with custom
+                        software built for efficiency.</p>
+                </div>
 
-        With deep technical expertise in Java, Python, Node.js, RESTful APIs, and cloud-based infrastructure, we deliver
-        efficient, secure, and scalable web applications for clients seeking transformation through technology.
+                <div class="service-card reveal delay-1">
+                    <div class="service-icon-wrapper">
+                        <div class="icon-3d shape-sphere"></div>
+                    </div>
+                    <h3 data-i18n="services.card2.title">Custom Web Apps</h3>
+                    <p data-i18n="services.card2.desc">Full-cycle development of responsive, scalable, and feature-rich
+                        applications for enterprise.</p>
+                </div>
 
-        CodingSoft is not just about code — it's about delivering clarity, speed, and intelligent workflow automation.
-    </p>
+                <div class="service-card reveal delay-2">
+                    <div class="service-icon-wrapper">
+                        <div class="icon-3d shape-cube"></div>
+                    </div>
+                    <h3 data-i18n="services.card3.title">AI-Powered Tools</h3>
+                    <p data-i18n="services.card3.desc">Integrate cutting-edge artificial intelligence into your business
+                        processes for smarter operations.</p>
+                </div>
 
-<script>
-  document.getElementById("aboutBtn").addEventListener("click", function () {
-    const messageBox = document.getElementById("aboutMessage");
+                <div class="service-card reveal delay-3">
+                    <div class="service-icon-wrapper">
+                        <div class="icon-3d shape-octahedron"></div>
+                    </div>
+                    <h3 data-i18n="services.card4.title">Systems Integration</h3>
+                    <p data-i18n="services.card4.desc">Connect your disparate tools and data sources into a single,
+                        cohesive business ecosystem.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    // Mostrar el mensaje y activar el display
-    messageBox.style.display = "block";
-    messageBox.innerHTML = `
-      <p>
-        Hello! I'm Oscar Mochizaki, founder of CodingSoft. I’m passionate about creating modern, scalable web solutions.
-        With experience in full-stack development, APIs, and cloud infrastructure, I help turn ideas into efficient technology.
-      </p>
-    `;
+    <!-- Projects -->
+    <section class="projects bg-alt" id="projects">
+        <div class="container">
+            <div class="projects-grid">
+                <div class="projects-info reveal">
+                    <h2 class="section-title" data-i18n="projects.title">Our Projects</h2>
+                    <p class="section-subtitle" data-i18n="projects.subtitle">See how we bring ideas to life and
+                        discover what we can create for you.</p>
+                    <a href="#" class="btn btn-outline mt-4" data-i18n="projects.view_all">View Projects</a>
+                </div>
 
-    // Ocultar después de 5 segundos
-    setTimeout(() => {
-      messageBox.innerHTML = "";
-      messageBox.style.display = "none";
-    }, 5000);
-  });
-</script>
+                <div class="projects-gallery">
+                    <div class="project-card reveal delay-1">
+                        <div class="project-image" style="background: linear-gradient(135deg, #1e293b, #0f172a);">
+                            <div class="mockup dashboard-mockup">
+                                <div class="mockup-header">ServeFlow - Automated Service Procurement System</div>
+                                <div class="mockup-body"></div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="project-card reveal delay-2" style="margin-top: -40px;">
+                        <div class="project-image" style="background: linear-gradient(135deg, #0047FF, #1e1b4b);">
+                            <div class="mockup app-mockup">
+                                <div class="mockup-header">DataSync Pro - Enterprise Integration</div>
+                            </div>
+                        </div>
+                    </div>
 
-<script src="script.js"></script>
+                    <div class="project-card reveal delay-3">
+                        <div class="project-image" style="background: linear-gradient(135deg, #0f172a, #020617);">
+                            <div class="mockup mobile-mockup">
+                                <div class="mockup-header">CloudMetric Mobile App</div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="project-card reveal delay-4" style="margin-top: -40px;">
+                        <div class="project-image" style="background: linear-gradient(135deg, #1e293b, #0f172a);">
+                            <div class="mockup dashboard-mockup">
+                                <div class="mockup-header">Project 4 Placeholder</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Why Choose Us -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <div class="text-center mb-5 reveal">
+                <h2 class="section-title" data-i18n="whyus.title">Why Choose Us</h2>
+                <p class="section-subtitle" data-i18n="whyus.subtitle">Future-Ready Solutions Built for Your Success</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                        </svg>
+                    </div>
+                    <h3 data-i18n="whyus.card1.title">Expertise That Delivers</h3>
+                    <p data-i18n="whyus.card1.desc">Our seasoned developers and consultants bring years of real-world
+                        experience to every project.</p>
+                </div>
+
+                <div class="feature-card reveal delay-1">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h3 data-i18n="whyus.card2.title">Client-Centric Approach</h3>
+                    <p data-i18n="whyus.card2.desc">Your goals are our mission. We collaborate closely to ensure your
+                        vision becomes reality.</p>
+                </div>
+
+                <div class="feature-card reveal delay-2">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M9 18h6"></path>
+                            <path d="M10 22h4"></path>
+                            <path
+                                d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.32.55 2.5 1.5 3.5.76.76 1.23 1.52 1.41 2.5">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 data-i18n="whyus.card3.title">Innovative Solutions</h3>
+                    <p data-i18n="whyus.card3.desc">We don't just build — we innovate. Expect cutting-edge technology
+                        and creative problem-solving.</p>
+                </div>
+
+                <div class="feature-card reveal delay-3">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path
+                                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 data-i18n="whyus.card4.title">Unwavering Support</h3>
+                    <p data-i18n="whyus.card4.desc">From first consultation to post-launch maintenance, we're committed
+                        to your success every step of the way.</p>
+                </div>
+            </div>
+
+            <!-- Testimonial Inline -->
+            <div class="testimonial-section mt-5 reveal">
+                <div class="testimonial-header">
+                    <h2 class="section-title" data-i18n="testimonials.title">Hear From Our Clients</h2>
+                    <p class="section-subtitle" data-i18n="testimonials.subtitle">Real stories. real impact. see why
+                        they trust us.</p>
+                    <div class="slider-controls mt-2">
+                        <button class="slider-btn prev"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M15 18l-6-6 6-6" />
+                            </svg></button>
+                        <button class="slider-btn next"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M9 18l6-6-6-6" />
+                            </svg></button>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="quote-text">"Partnering with your team transformed our business. Their dedication,
+                        technical expertise, and creative solutions were beyond our expectations."</p>
+                    <div class="quote-author">
+                        <div class="author-avatar">
+                            <img src="https://i.pravatar.cc/150?img=47" alt="Elenna Kusrov">
+                        </div>
+                        <div class="author-info">
+                            <h4>Elenna Kusrov</h4>
+                            <p>MegaImpact Company</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="faq-grid">
+                <div class="faq-info reveal">
+                    <p class="text-muted" data-i18n="faq.label">FAQs</p>
+                    <h2 class="section-title" data-i18n="faq.title">We Have All The Answers</h2>
+                    <p class="section-subtitle" data-i18n="faq.subtitle">Find answers to the most common questions about
+                        our services, pricing, and processes.</p>
+                </div>
+
+                <div class="faq-accordion reveal delay-1">
+                    <div class="accordion-item active">
+                        <button class="accordion-header">
+                            <span data-i18n="faq.q1">What industries do you specialize in?</span>
+                            <span class="icon">-</span>
+                        </button>
+                        <div class="accordion-content" style="max-height: 200px;">
+                            <p data-i18n="faq.a1">We work across multiple industries including tech, finance,
+                                healthcare, and retail. Our systems are adaptable to any business process.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span data-i18n="faq.q2">Do you offer post-launch support?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p data-i18n="faq.a2">Yes, we offer comprehensive maintenance and support packages to ensure
+                                your systems remain secure, up-to-date, and fully functional.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span data-i18n="faq.q3">How long does a typical project take?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p data-i18n="faq.a3">Project timelines vary depending on scope and complexity. A standard
+                                web application typically takes 8-12 weeks from discovery to launch.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span data-i18n="faq.q4">Can you work with our in-house team?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p data-i18n="faq.a4">Absolutely. We frequently collaborate with internal IT and development
+                                teams to augment capabilities and accelerate delivery.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span data-i18n="faq.q5">Do you provide onboarding assistance?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p data-i18n="faq.a5">Yes, we provide full training and documentation for all custom systems
+                                we build to ensure your team can use them effectively.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <div class="cta-banner reveal">
+                <div class="cta-bg-glow"></div>
+                <div class="cta-content">
+                    <h2 data-i18n="cta.title">Start Building Your Business System Today</h2>
+                    <p data-i18n="cta.desc">Looking for expert advice or a custom solution? Send us a message, and our
+                        team will be happy to assist you.</p>
+                    <a href="mailto:contactcodingsoft@gmail.com" class="btn btn-primary btn-lg mt-3"
+                        data-i18n="cta.btn">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <svg width="30" height="30" viewBox="0 0 100 100" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="#0047FF" />
+                            <circle cx="30" cy="50" r="6" fill="#38BDF8" />
+                            <circle cx="40" cy="35" r="6" fill="#38BDF8" />
+                            <circle cx="60" cy="35" r="6" fill="#38BDF8" />
+                            <circle cx="70" cy="50" r="6" fill="#38BDF8" />
+                            <circle cx="60" cy="65" r="6" fill="#38BDF8" />
+                            <circle cx="40" cy="65" r="6" fill="#38BDF8" />
+                        </svg>
+                        <span class="logo-text chrome-text">CODINGSOFT</span>
+                    </a>
+                    <p class="mt-2 text-muted" data-i18n="footer.tagline">Smart, Scalable, and Future-Ready Digital
+                        Solutions</p>
+                    <div class="social-links mt-3">
+                        <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg></a>
+                        <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M4 4l11.73 16h5L9 4H4z" />
+                                <path d="M4 20l6.76-6.76M20 4l-6.76 6.76" />
+                            </svg></a>
+                        <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4 data-i18n="footer.quick_links">Quick links</h4>
+                    <ul>
+                        <li><a href="#services" data-i18n="nav.services">Services</a></li>
+                        <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+                        <li><a href="#" data-i18n="footer.blog">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4 data-i18n="footer.company">Company</h4>
+                    <ul>
+                        <li><a href="#why-us" data-i18n="footer.about">About Us</a></li>
+                        <li><a href="#" data-i18n="footer.careers">Careers</a></li>
+                        <li><a href="#contact" data-i18n="footer.contact">Contact Us</a></li>
+                        <li><a href="#" data-i18n="footer.privacy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span>contactcodingsoft@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                            </path>
+                        </svg>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <span>San Francisco, CA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">&copy; Copyrights reserved CodingSoft 2026</p>
+                <div class="footer-bottom-links">
+                    <a href="#" data-i18n="footer.terms">Terms & conditions</a>
+                    <a href="#" data-i18n="footer.cookies">Cookies Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="main.js"></script>
+    <script src="chat.js"></script>
 </body>
 
 </html>

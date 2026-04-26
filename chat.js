@@ -1,0 +1,262 @@
+// chat.js
+document.addEventListener('DOMContentLoaded', () => {
+    // Inject HTML
+    const widgetHTML = `
+        <div class="chatbot-widget">
+            <div class="proactive-greeting" id="proactive-greeting">
+                <p>Hi! I'm Tetsuo 👋 Need help building a software system?</p>
+                <button id="close-greeting" class="close-greeting">&times;</button>
+            </div>
+            <div class="chatbot-window" id="chatbot-window">
+                <div class="chat-header">
+                    <img src="avatar.png" alt="Tetsuo" class="chat-avatar" onerror="this.src='https://ui-avatars.com/api/?name=Tetsuo&background=0047FF&color=fff'">
+                    <div class="chat-title">
+                        <h4>Tetsuo</h4>
+                        <p>● Online</p>
+                    </div>
+                </div>
+                <div class="chat-body" id="chat-body">
+                    <!-- Messages go here -->
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="chat-input" placeholder="Type a message..." disabled>
+                    <button id="chat-send-btn" class="chat-send-btn" disabled>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                    </button>
+                </div>
+            </div>
+            <button class="chatbot-launcher" id="chatbot-toggle">
+                <img src="avatar.png" alt="Tetsuo" class="launcher-avatar" id="launcher-avatar" onerror="this.src='https://ui-avatars.com/api/?name=Tetsuo&background=0047FF&color=fff'">
+                <div class="chatbot-online-dot" id="chatbot-online-dot"></div>
+                <div class="launcher-close" id="chat-icon-close" style="display:none;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </div>
+            </button>
+        </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', widgetHTML);
+
+    // Elements
+    const toggleBtn = document.getElementById('chatbot-toggle');
+    const chatWindow = document.getElementById('chatbot-window');
+    const chatBody = document.getElementById('chat-body');
+    const chatInput = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('chat-send-btn');
+    const iconClose = document.getElementById('chat-icon-close');
+    const launcherAvatar = document.getElementById('launcher-avatar');
+    const onlineDot = document.getElementById('chatbot-online-dot');
+    const greetingBubble = document.getElementById('proactive-greeting');
+    const closeGreetingBtn = document.getElementById('close-greeting');
+
+    // State
+    let isOpen = false;
+    let step = 0;
+    const leadData = {
+        serviceType: '',
+        businessName: '',
+        fullName: '',
+        email: '',
+        phone: '',
+        message: '',
+        createdAt: ''
+    };
+
+    const flow = [
+        {
+            type: 'options',
+            text: "Hi! I'm Tetsuo from CodingSoft 👋 How can I help you today?",
+            options: [
+                "Website Development",
+                "Business Automation",
+                "Custom Web App",
+                "AI-Powered Tools",
+                "Systems Integration",
+                "Other"
+            ],
+            key: 'serviceType'
+        },
+        { type: 'text', text: "What is your business name?", key: 'businessName' },
+        { type: 'text', text: "What is your name?", key: 'fullName' },
+        { type: 'email', text: "What is the best email to contact you?", key: 'email' },
+        { type: 'text', text: "What is your phone number?", key: 'phone' },
+        { type: 'text', text: "Briefly describe what you need.", key: 'message' },
+        { type: 'end', text: "Thank you! Your request has been received. Our team will contact you shortly." }
+    ];
+
+    // Proactive Greeting Logic
+    function hideGreeting() {
+        greetingBubble.classList.remove('show');
+        sessionStorage.setItem('oscar_greeting_shown', 'true');
+    }
+
+    if (!sessionStorage.getItem('oscar_greeting_shown')) {
+        setTimeout(() => {
+            if (!isOpen) {
+                greetingBubble.classList.add('show');
+            }
+        }, 4000);
+    }
+
+    closeGreetingBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        hideGreeting();
+    });
+
+    greetingBubble.querySelector('p').addEventListener('click', () => {
+        hideGreeting();
+        toggleBtn.click();
+    });
+
+    // Toggle Chat
+    toggleBtn.addEventListener('click', () => {
+        isOpen = !isOpen;
+        chatWindow.classList.toggle('open', isOpen);
+
+        if (isOpen) {
+            launcherAvatar.style.opacity = '0.2';
+            iconClose.style.display = 'block';
+            onlineDot.style.display = 'none';
+            hideGreeting();
+        } else {
+            launcherAvatar.style.opacity = '1';
+            iconClose.style.display = 'none';
+            onlineDot.style.display = 'block';
+        }
+
+        if (isOpen && step === 0) {
+            nextStep();
+        }
+    });
+
+    function addMessage(text, sender) {
+        const div = document.createElement('div');
+        div.className = `chat-message ${sender}`;
+        div.textContent = text;
+        chatBody.appendChild(div);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function addOptions(options) {
+        const div = document.createElement('div');
+        div.className = 'chat-options';
+        options.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'chat-option-btn';
+            btn.textContent = opt;
+            btn.addEventListener('click', () => handleUserInput(opt));
+            div.appendChild(btn);
+        });
+        chatBody.appendChild(div);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function addFinalButtons() {
+        const div = document.createElement('div');
+        div.className = 'chat-options';
+
+        const waBtn = document.createElement('button');
+        waBtn.className = 'chat-option-btn';
+        waBtn.style.background = '#25D366';
+        waBtn.style.borderColor = '#25D366';
+        waBtn.style.color = 'white';
+        waBtn.style.textAlign = 'center';
+        waBtn.style.fontWeight = 'bold';
+        waBtn.textContent = 'Continue on WhatsApp';
+        waBtn.addEventListener('click', generateWhatsAppLink);
+
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'chat-option-btn';
+        closeBtn.style.textAlign = 'center';
+        closeBtn.textContent = 'Close Chat';
+        closeBtn.addEventListener('click', () => {
+            isOpen = false;
+            chatWindow.classList.remove('open');
+            launcherAvatar.style.opacity = '1';
+            iconClose.style.display = 'none';
+            onlineDot.style.display = 'block';
+        });
+
+        div.appendChild(waBtn);
+        div.appendChild(closeBtn);
+        chatBody.appendChild(div);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function nextStep() {
+        if (step >= flow.length) return;
+
+        const current = flow[step];
+        addMessage(current.text, 'bot');
+
+        if (current.type === 'options') {
+            addOptions(current.options);
+            chatInput.disabled = true;
+            sendBtn.disabled = true;
+        } else if (current.type === 'end') {
+            chatInput.disabled = true;
+            sendBtn.disabled = true;
+            leadData.createdAt = new Date().toISOString();
+            submitLead(leadData);
+            addFinalButtons();
+        } else {
+            chatInput.disabled = false;
+            sendBtn.disabled = false;
+            chatInput.focus();
+        }
+    }
+
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+
+    function handleUserInput(value) {
+        if (!value || !value.trim()) return;
+
+        const current = flow[step];
+
+        if (current.type === 'email' && !validateEmail(value)) {
+            addMessage(value, 'user');
+            addMessage("Please enter a valid email address.", 'bot');
+            chatInput.value = '';
+            return;
+        }
+
+        addMessage(value, 'user');
+
+        // Save data
+        if (current.key) {
+            leadData[current.key] = value;
+        }
+
+        // Remove options if they exist
+        const optionsDiv = chatBody.querySelector('.chat-options:last-child');
+        if (optionsDiv && current.type === 'options') {
+            optionsDiv.remove();
+        }
+
+        chatInput.value = '';
+        step++;
+        setTimeout(nextStep, 500);
+    }
+
+    sendBtn.addEventListener('click', () => handleUserInput(chatInput.value));
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleUserInput(chatInput.value);
+    });
+
+    function submitLead(data) {
+        console.log('Lead Data Collected:', data);
+        localStorage.setItem('codingsoft_lead', JSON.stringify(data));
+        // POST /api/leads implementation would go here
+        // fetch('/api/leads', { method: 'POST', body: JSON.stringify(data) })
+    }
+
+    function generateWhatsAppLink() {
+        const phone = '1234567890'; // Replace with actual number if provided
+        const text = `Hi CodingSoft, I'm interested in ${leadData.serviceType}. Business: ${leadData.businessName}. Name: ${leadData.fullName}. Email: ${leadData.email}. Phone: ${leadData.phone}. Details: ${leadData.message}.`;
+        const encodedText = encodeURIComponent(text);
+        window.open(`https://wa.me/${phone}?text=${encodedText}`, '_blank');
+    }
+});
