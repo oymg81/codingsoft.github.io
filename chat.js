@@ -1,3 +1,17 @@
+// Initialize EmailJS
+emailjs.init("Lgwtc4N0HsuCnzZfh");
+
+const SUPABASE_URL = "https://abfjdyqhbvhhebuekamx.supabase.co";
+const SUPABASE_KEY = "sb_publishable_O5SF6k_EiIj7H7QyeHUQUw_yanU2B3M";
+
+const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+
+
+
 // chat.js
 document.addEventListener('DOMContentLoaded', () => {
     // Inject HTML
@@ -183,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
         chatBody.scrollTop = chatBody.scrollHeight;
     }
 
-    function nextStep() {
+    async function nextStep() {
         if (step >= flow.length) return;
 
         const current = flow[step];
@@ -197,7 +211,8 @@ document.addEventListener('DOMContentLoaded', () => {
             chatInput.disabled = true;
             sendBtn.disabled = true;
             leadData.createdAt = new Date().toISOString();
-            submitLead(leadData);
+            await submitLead(leadData);
+            sendEmailNotification(leadData);
             addFinalButtons();
         } else {
             chatInput.disabled = false;
@@ -246,17 +261,52 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Enter') handleUserInput(chatInput.value);
     });
 
-    function submitLead(data) {
+    async function submitLead(data) {
         console.log('Lead Data Collected:', data);
         localStorage.setItem('codingsoft_lead', JSON.stringify(data));
-        // POST /api/leads implementation would go here
-        // fetch('/api/leads', { method: 'POST', body: JSON.stringify(data) })
+
+        try {
+            const { data: result, error } = await supabaseClient
+                .from('leads')
+                .insert([
+                    {
+                        service_type: data.serviceType,
+                        business_name: data.businessName,
+                        full_name: data.fullName,
+                        email: data.email,
+                        phone: data.phone,
+                        message: data.message
+                    }
+                ]);
+
+            if (error) throw error;
+            console.log('Successfully submitted lead to Supabase:', result);
+        } catch (error) {
+            console.error('Error submitting lead to Supabase:', error.message);
+        }
+    }
+
+    function sendEmailNotification(data) {
+        const templateParams = {
+            service_type: data.serviceType,
+            business_name: data.businessName,
+            full_name: data.fullName,
+            email: data.email,
+            phone: data.phone,
+            message: data.message
+        };
+
+        emailjs.send(
+            "service_5639krm",
+            "template_s5x7mml",
+            templateParams
+        ).then(
+            () => console.log("Email notification sent"),
+            (error) => console.error("Email error:", error)
+        );
     }
 
     function generateWhatsAppLink() {
-        const phone = '1234567890'; // Replace with actual number if provided
-        const text = `Hi CodingSoft, I'm interested in ${leadData.serviceType}. Business: ${leadData.businessName}. Name: ${leadData.fullName}. Email: ${leadData.email}. Phone: ${leadData.phone}. Details: ${leadData.message}.`;
-        const encodedText = encodeURIComponent(text);
-        window.open(`https://wa.me/${phone}?text=${encodedText}`, '_blank');
+        window.open("https://wa.me/message/BOB3EMBT3RKRO1", "_blank");
     }
 });
