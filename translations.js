@@ -5,17 +5,17 @@ const translations = {
         "nav.projects": "Projects",
         "nav.company": "Company",
         "nav.cta": "Get A Quotation",
-        
+
         // Hero
         "hero.title1": "We Build Scalable Software & Business Systems",
-        "hero.title2": "Our ",
+        "hero.title2": "",
         "hero.title_gradient": "Not Just Websites",
         "hero.subtitle": "From websites to automation, APIs, and full platforms — CodingSoft turns ideas into real, working systems.",
         "hero.cta": "Contact Us",
-        
+
         // Trusted By
         "trusted.title": "Trusted By Leading Companies",
-        
+
         // Services
         "services.title": "Our services",
         "services.subtitle": "Delivering high-quality solutions that empower businesses",
@@ -28,12 +28,12 @@ const translations = {
         "services.card3.desc": "Integrate cutting-edge artificial intelligence into your business processes for smarter operations.",
         "services.card4.title": "Systems Integration",
         "services.card4.desc": "Connect your disparate tools and data sources into a single, cohesive business ecosystem.",
-        
+
         // Projects
         "projects.title": "Our Projects",
         "projects.subtitle": "See how we bring ideas to life and discover what we can create for you.",
         "projects.view_all": "View Projects",
-        
+
         // Why Us
         "whyus.title": "Why Choose Us",
         "whyus.subtitle": "Future-Ready Solutions Built for Your Success",
@@ -45,11 +45,11 @@ const translations = {
         "whyus.card3.desc": "We don't just build — we innovate. Expect cutting-edge technology and creative problem-solving.",
         "whyus.card4.title": "Unwavering Support",
         "whyus.card4.desc": "From first consultation to post-launch maintenance, we're committed to your success every step of the way.",
-        
+
         // Testimonials
         "testimonials.title": "Hear From Our Clients",
         "testimonials.subtitle": "Real stories. real impact. see why they trust us.",
-        
+
         // FAQ
         "faq.label": "FAQs",
         "faq.title": "We Have All The Answers",
@@ -64,12 +64,12 @@ const translations = {
         "faq.a4": "Absolutely. We frequently collaborate with internal IT and development teams to augment capabilities and accelerate delivery.",
         "faq.q5": "Do you provide onboarding assistance?",
         "faq.a5": "Yes, we provide full training and documentation for all custom systems we build to ensure your team can use them effectively.",
-        
+
         // CTA
         "cta.title": "Start Building Your Business System Today",
         "cta.desc": "Looking for expert advice or a custom solution? Send us a message, and our team will be happy to assist you.",
         "cta.btn": "Contact Us",
-        
+
         // Footer
         "footer.tagline": "Smart, Scalable, and Future-Ready Digital Solutions",
         "footer.quick_links": "Quick links",
@@ -89,17 +89,17 @@ const translations = {
         "nav.projects": "Proyectos",
         "nav.company": "Compañía",
         "nav.cta": "Pedir Presupuesto",
-        
+
         // Hero
         "hero.title1": "Construimos Software Escalable y Sistemas de Negocio",
-        "hero.title2": "Nuestras ",
+        "hero.title2": "",
         "hero.title_gradient": "No Solo Sitios Web",
         "hero.subtitle": "Desde sitios web hasta automatización, APIs y plataformas completas — CodingSoft convierte ideas en sistemas reales y funcionales.",
         "hero.cta": "Contáctanos",
-        
+
         // Trusted By
         "trusted.title": "Con La Confianza De Empresas Líderes",
-        
+
         // Services
         "services.title": "Nuestros servicios",
         "services.subtitle": "Entregando soluciones de alta calidad que potencian a las empresas",
@@ -112,12 +112,12 @@ const translations = {
         "services.card3.desc": "Integra inteligencia artificial de vanguardia en tus procesos comerciales para operaciones más inteligentes.",
         "services.card4.title": "Integración de Sistemas",
         "services.card4.desc": "Conecta tus herramientas dispersas y fuentes de datos en un ecosistema empresarial único y cohesivo.",
-        
+
         // Projects
         "projects.title": "Nuestros Proyectos",
         "projects.subtitle": "Mira cómo damos vida a las ideas y descubre lo que podemos crear para ti.",
         "projects.view_all": "Ver Proyectos",
-        
+
         // Why Us
         "whyus.title": "Por Qué Elegirnos",
         "whyus.subtitle": "Soluciones Preparadas para el Futuro Construidas para tu Éxito",
@@ -129,11 +129,11 @@ const translations = {
         "whyus.card3.desc": "No solo construimos, innovamos. Espera tecnología de punta y resolución creativa de problemas.",
         "whyus.card4.title": "Soporte Inquebrantable",
         "whyus.card4.desc": "Desde la primera consulta hasta el mantenimiento post-lanzamiento, estamos comprometidos con tu éxito.",
-        
+
         // Testimonials
         "testimonials.title": "Escucha A Nuestros Clientes",
         "testimonials.subtitle": "Historias reales. Impacto real. Mira por qué confían en nosotros.",
-        
+
         // FAQ
         "faq.label": "Preguntas Frecuentes",
         "faq.title": "Tenemos Todas Las Respuestas",
@@ -148,12 +148,12 @@ const translations = {
         "faq.a4": "Absolutamente. Frecuentemente colaboramos con equipos internos de TI para aumentar capacidades y acelerar entregas.",
         "faq.q5": "¿Proporcionan asistencia de integración?",
         "faq.a5": "Sí, proporcionamos capacitación completa y documentación para todos los sistemas que construimos.",
-        
+
         // CTA
         "cta.title": "Empieza a Construir tu Sistema Hoy",
         "cta.desc": "¿Buscas asesoramiento experto o una solución personalizada? Envíanos un mensaje y nuestro equipo te ayudará.",
         "cta.btn": "Contáctanos",
-        
+
         // Footer
         "footer.tagline": "Soluciones Digitales Inteligentes, Escalables y Listas para el Futuro",
         "footer.quick_links": "Enlaces rápidos",
