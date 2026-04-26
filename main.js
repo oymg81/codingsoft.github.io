@@ -152,6 +152,20 @@ document.addEventListener('DOMContentLoaded', () => {
             setLanguage(currentLang === 'en' ? 'es' : 'en');
         });
     }
+
+    // 7. Chatbot Triggers
+    const chatbotTriggers = document.querySelectorAll('a[href="#contact"], a[href="mailto:contactcodingsoft@gmail.com"]');
+    chatbotTriggers.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const chatbotToggle = document.getElementById('chatbot-toggle');
+            if (chatbotToggle) {
+                if (!chatbotToggle.parentElement.querySelector('.chatbot-window').classList.contains('open')) {
+                    chatbotToggle.click();
+                }
+            }
+        });
+    });
 });
 
 // 6. Mobile Menu Logic

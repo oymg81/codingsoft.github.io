@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { type: 'email', text: "What is the best email to contact you?", key: 'email' },
         { type: 'text', text: "What is your phone number?", key: 'phone' },
         { type: 'text', text: "Briefly describe what you need.", key: 'message' },
+        { type: 'summary', text: "Here is your summary. Does this look correct?" },
         { type: 'end', text: "Thank you! Your request has been received. Our team will contact you shortly." }
     ];
 
@@ -126,6 +127,16 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleBtn.click();
     });
 
+    function resetChat() {
+        chatBody.innerHTML = '';
+        step = 0;
+        isProcessing = false;
+        chatInput.value = '';
+        chatInput.disabled = true;
+        sendBtn.disabled = true;
+        Object.keys(leadData).forEach(key => leadData[key] = '');
+    }
+
     // Toggle Chat
     toggleBtn.addEventListener('click', () => {
         isOpen = !isOpen;
@@ -136,14 +147,14 @@ document.addEventListener('DOMContentLoaded', () => {
             iconClose.style.display = 'block';
             onlineDot.style.display = 'none';
             hideGreeting();
+            if (step === 0 && chatBody.children.length === 0) {
+                nextStep();
+            }
         } else {
             launcherAvatar.style.opacity = '1';
             iconClose.style.display = 'none';
             onlineDot.style.display = 'block';
-        }
-
-        if (isOpen && step === 0) {
-            nextStep();
+            setTimeout(resetChat, 300);
         }
     });
 
@@ -162,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const btn = document.createElement('button');
             btn.className = 'chat-option-btn';
             btn.textContent = opt;
-            btn.addEventListener('click', () => handleUserInput(opt));
+            btn.addEventListener('click', () => handleUserInput(opt, true));
             div.appendChild(btn);
         });
         chatBody.appendChild(div);
@@ -171,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function addFinalButtons() {
         const div = document.createElement('div');
-        div.className = 'chat-options';
+        div.className = 'chat-options final-options';
 
         const waBtn = document.createElement('button');
         waBtn.className = 'chat-option-btn';
@@ -193,6 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
             launcherAvatar.style.opacity = '1';
             iconClose.style.display = 'none';
             onlineDot.style.display = 'block';
+            setTimeout(resetChat, 300);
         });
 
         div.appendChild(waBtn);
@@ -211,6 +223,28 @@ document.addEventListener('DOMContentLoaded', () => {
             addOptions(current.options);
             chatInput.disabled = true;
             sendBtn.disabled = true;
+        } else if (current.type === 'summary') {
+            chatInput.disabled = true;
+            sendBtn.disabled = true;
+            
+            const summaryHTML = `
+                <div style="font-size: 0.85rem; line-height: 1.5;">
+                <b>Service:</b> ${leadData.serviceType}<br>
+                <b>Business:</b> ${leadData.businessName}<br>
+                <b>Name:</b> ${leadData.fullName}<br>
+                <b>Email:</b> ${leadData.email}<br>
+                <b>Phone:</b> ${leadData.phone}<br>
+                <b>Message:</b> ${leadData.message}
+                </div>
+            `;
+            
+            const div = document.createElement('div');
+            div.className = 'chat-message bot';
+            div.innerHTML = summaryHTML;
+            chatBody.appendChild(div);
+            
+            addOptions(["Confirm & Submit", "Edit Details"]);
+            chatBody.scrollTop = chatBody.scrollHeight;
         } else if (current.type === 'end') {
             chatInput.disabled = true;
             sendBtn.disabled = true;
@@ -234,11 +268,32 @@ document.addEventListener('DOMContentLoaded', () => {
         return re.test(email);
     }
 
-    function handleUserInput(value) {
+    function handleUserInput(value, isOption = false) {
         if (!value || !value.trim() || isProcessing) return;
-        isProcessing = true;
 
         const current = flow[step];
+
+        if (isOption && current.type !== 'options' && current.type !== 'summary') {
+            return; // Ignore quick option clicks if we are expecting text
+        }
+
+        isProcessing = true;
+
+        if (current.type === 'summary') {
+            const optionsDivs = chatBody.querySelectorAll('.chat-options:not(.final-options)');
+            optionsDivs.forEach(div => div.remove());
+
+            if (value === "Edit Details") {
+                step = 1; // Restart from Business Name
+                addMessage(value, 'user');
+                setTimeout(() => {
+                    nextStep();
+                    isProcessing = false;
+                }, 500);
+                return;
+            }
+            value = "Confirm & Submit";
+        }
 
         if (current.type === 'email' && !validateEmail(value)) {
             addMessage(value, 'user');
@@ -255,11 +310,9 @@ document.addEventListener('DOMContentLoaded', () => {
             leadData[current.key] = value;
         }
 
-        // Remove options if they exist
-        const optionsDiv = chatBody.querySelector('.chat-options:last-child');
-        if (optionsDiv && current.type === 'options') {
-            optionsDiv.remove();
-        }
+        // Remove all non-final options divs
+        const optionsDivs = chatBody.querySelectorAll('.chat-options:not(.final-options)');
+        optionsDivs.forEach(div => div.remove());
 
         chatInput.value = '';
         step++;
@@ -326,6 +379,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function generateWhatsAppLink() {
-        window.open("https://wa.me/message/BOB3EMBT3RKRO1", "_blank");
+        const text = `Hi CodingSoft! I would like to request a quote.\n\n*Service:* ${leadData.serviceType}\n*Business:* ${leadData.businessName}\n*Name:* ${leadData.fullName}\n*Email:* ${leadData.email}\n*Phone:* ${leadData.phone}\n*Message:* ${leadData.message}`;
+        const encodedText = encodeURIComponent(text);
+        window.open(`https://wa.me/message/BOB3EMBT3RKRO1?text=${encodedText}`, "_blank");
     }
 });
