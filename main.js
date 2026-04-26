@@ -153,3 +153,61 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// 6. Mobile Menu Logic
+function initMobileMenu() {
+  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+  const navLinks = document.querySelector('.nav-links');
+  const navActions = document.querySelector('.right-nav-actions');
+
+  if (!mobileMenuBtn || !navLinks || !navActions) return;
+
+  // Prevent duplicate event listeners
+  if (mobileMenuBtn.dataset.initialized === 'true') return;
+  mobileMenuBtn.dataset.initialized = 'true';
+
+  function closeMobileMenu() {
+    mobileMenuBtn.classList.remove('active');
+    navLinks.classList.remove('active');
+    navActions.classList.remove('active');
+    document.body.classList.remove('menu-open');
+  }
+
+  function toggleMobileMenu() {
+    mobileMenuBtn.classList.toggle('active');
+    navLinks.classList.toggle('active');
+    navActions.classList.toggle('active');
+    document.body.classList.toggle('menu-open');
+  }
+
+  mobileMenuBtn.addEventListener('click', (event) => {
+    event.stopPropagation();
+    toggleMobileMenu();
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMobileMenu);
+  });
+
+  navActions.querySelectorAll('a, button').forEach(action => {
+    action.addEventListener('click', () => {
+      if (!action.id || action.id !== 'lang-toggle') {
+        closeMobileMenu();
+      }
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    const clickedInsideMenu =
+      navLinks.contains(event.target) ||
+      navActions.contains(event.target) ||
+      mobileMenuBtn.contains(event.target);
+
+    if (!clickedInsideMenu) {
+      closeMobileMenu();
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initMobileMenu);
+

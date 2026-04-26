@@ -14,6 +14,9 @@ const supabaseClient = supabase.createClient(
 
 // chat.js
 document.addEventListener('DOMContentLoaded', () => {
+    if (window.chatInitialized) return;
+    window.chatInitialized = true;
+
     // Inject HTML
     const widgetHTML = `
         <div class="chatbot-widget">
@@ -66,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // State
     let isOpen = false;
     let step = 0;
+    let isProcessing = false;
     const leadData = {
         serviceType: '',
         businessName: '',
@@ -231,7 +235,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function handleUserInput(value) {
-        if (!value || !value.trim()) return;
+        if (!value || !value.trim() || isProcessing) return;
+        isProcessing = true;
 
         const current = flow[step];
 
@@ -239,6 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
             addMessage(value, 'user');
             addMessage("Please enter a valid email address.", 'bot');
             chatInput.value = '';
+            isProcessing = false;
             return;
         }
 
@@ -257,7 +263,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         chatInput.value = '';
         step++;
-        setTimeout(nextStep, 500);
+        setTimeout(() => {
+            nextStep();
+            isProcessing = false;
+        }, 500);
     }
 
     sendBtn.addEventListener('click', () => handleUserInput(chatInput.value));
