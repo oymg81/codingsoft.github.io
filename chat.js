@@ -288,9 +288,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function sendEmailNotification(data) {
         const templateParams = {
-            service_type: data.serviceType,
-            business_name: data.businessName,
             full_name: data.fullName,
+            business_name: data.businessName,
+            service_type: data.serviceType,
             email: data.email,
             phone: data.phone,
             message: data.message
@@ -299,12 +299,13 @@ document.addEventListener('DOMContentLoaded', () => {
         emailjs.send(
             "service_5639krm",
             "template_s5x7mml",
-            templateParams
-        ).then(
-            () => console.log("Email notification sent"),
-            (error) => console.error("Email error:", error)
-        );
+            templateParams,
+            "Lgwtc4N0HsuCnzZfh"
+        )
+            .then(() => console.log("✅ Email sent successfully"))
+            .catch((error) => console.error("❌ Email error:", error));
     }
+
 
     function generateWhatsAppLink() {
         window.open("https://wa.me/message/BOB3EMBT3RKRO1", "_blank");
