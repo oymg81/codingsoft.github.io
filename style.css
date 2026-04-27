@@ -204,11 +204,15 @@ section {
 
 .mobile-menu-btn {
     display: none;
-    background: none;
+    background: transparent;
     border: none;
     cursor: pointer;
     flex-direction: column;
     gap: 5px;
+    padding: 10px;
+    margin: -10px;
+    z-index: 1000;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .mobile-menu-btn span {
@@ -217,6 +221,7 @@ section {
     height: 2px;
     background-color: var(--text-main);
     transition: var(--transition);
+    pointer-events: none;
 }
 
 /* Background Mesh */
