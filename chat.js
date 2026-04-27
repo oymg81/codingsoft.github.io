@@ -281,11 +281,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (current.type === 'summary') {
             const optionsDivs = chatBody.querySelectorAll('.chat-options:not(.final-options)');
-            optionsDivs.forEach(div => div.remove());
+            const activeOptions = optionsDivs[optionsDivs.length - 1];
+            if (activeOptions) {
+                activeOptions.querySelectorAll('.chat-option-btn').forEach(btn => {
+                    if (btn.textContent === value) btn.classList.add('selected');
+                    btn.disabled = true;
+                });
+            }
 
             if (value === "Edit Details") {
                 step = 1; // Restart from Business Name
-                addMessage(value, 'user');
                 setTimeout(() => {
                     nextStep();
                     isProcessing = false;
@@ -296,23 +301,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (current.type === 'email' && !validateEmail(value)) {
-            addMessage(value, 'user');
+            if (!isOption) addMessage(value, 'user');
             addMessage("Please enter a valid email address.", 'bot');
             chatInput.value = '';
             isProcessing = false;
             return;
         }
 
-        addMessage(value, 'user');
+        if (!isOption) {
+            addMessage(value, 'user');
+        } else {
+            // Mark option as selected and disable all in the active group
+            const optionsDivs = chatBody.querySelectorAll('.chat-options:not(.final-options)');
+            const activeOptions = optionsDivs[optionsDivs.length - 1];
+            if (activeOptions) {
+                activeOptions.querySelectorAll('.chat-option-btn').forEach(btn => {
+                    if (btn.textContent === value) {
+                        btn.classList.add('selected');
+                    }
+                    btn.disabled = true;
+                });
+            }
+        }
 
         // Save data
         if (current.key) {
             leadData[current.key] = value;
         }
-
-        // Remove all non-final options divs
-        const optionsDivs = chatBody.querySelectorAll('.chat-options:not(.final-options)');
-        optionsDivs.forEach(div => div.remove());
 
         chatInput.value = '';
         step++;
