@@ -204,6 +204,8 @@ function initMobileMenu() {
   });
 
   navActions.querySelectorAll('a, button').forEach(action => {
+    if (action.classList.contains('mobile-menu-btn')) return;
+    
     action.addEventListener('click', () => {
       if (!action.id || action.id !== 'lang-toggle') {
         closeMobileMenu();
