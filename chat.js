@@ -106,16 +106,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Proactive Greeting Logic
     function hideGreeting() {
         greetingBubble.classList.remove('show');
-        sessionStorage.setItem('oscar_greeting_shown', 'true');
     }
 
-    if (!sessionStorage.getItem('oscar_greeting_shown')) {
-        setTimeout(() => {
-            if (!isOpen) {
-                greetingBubble.classList.add('show');
-            }
-        }, 4000);
-    }
+    setTimeout(() => {
+        if (!isOpen) {
+            greetingBubble.classList.add('show');
+        }
+    }, 1500);
 
     closeGreetingBtn.addEventListener('click', (e) => {
         e.stopPropagation();
