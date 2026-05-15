@@ -7,10 +7,10 @@ const translations = {
         "nav.cta": "Get A Quotation",
 
         // Hero
-        "hero.title1": "We Build Scalable Software & Business Systems",
+        "hero.title1": "Turn Business Ideas Into Operational Systems",
         "hero.title2": "",
-        "hero.title_gradient": "Not Just Websites",
-        "hero.subtitle": "From websites to automation, APIs, and full platforms — CodingSoft turns ideas into real, working systems.",
+        "hero.title_gradient": "AI-Powered Workflows & Platforms",
+        "hero.subtitle": "From automation and AI workflows to scalable platforms and APIs — CodingSoft transforms ideas into real operational systems.",
         "hero.cta": "Contact Us",
 
         // Trusted By
@@ -104,10 +104,10 @@ const translations = {
         "nav.cta": "Pedir Presupuesto",
 
         // Hero
-        "hero.title1": "Construimos Software Escalable y Sistemas de Negocio",
+        "hero.title1": "Transformamos Ideas de Negocio en Sistemas Operacionales",
         "hero.title2": "",
-        "hero.title_gradient": "No Solo Sitios Web",
-        "hero.subtitle": "Desde sitios web hasta automatización, APIs y plataformas completas — CodingSoft convierte ideas en sistemas reales y funcionales.",
+        "hero.title_gradient": "Workflows y Plataformas Impulsadas por IA",
+        "hero.subtitle": "Desde automatización y workflows con IA hasta plataformas escalables y APIs — CodingSoft transforma ideas en sistemas operacionales reales.",
         "hero.cta": "Contáctanos",
 
         // Trusted By
