@@ -134,8 +134,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const desc = isEn ? ind.descEn : ind.descEs;
             
             // Primary and Secondary actions according to CTA rules
+            const customDemoLabel = isEn ? ind.demoLabelEn : ind.demoLabelEs;
             const demoBtnText = ind.demoStatus === 'ready' 
-                ? (isEn ? "View Demo" : "Ver Demo") 
+                ? (customDemoLabel || (isEn ? "View Demo" : "Ver Demo")) 
                 : (isEn ? "Coming Soon" : "Próximamente");
             const requestBtnText = isEn ? "Start Similar Project" : "Iniciar Proyecto Similar";
 

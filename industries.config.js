@@ -7,7 +7,9 @@ const industriesConfig = [
     requestUrl: "./start-project/?industry=real-estate",
     // Deployed URL for the Real Estate demo
     demoUrl: "https://codingsoft-demo-real-estate.vercel.app/",
-demoStatus: "ready",
+    demoStatus: "ready",
+    demoLabelEn: "View Demo",
+    demoLabelEs: "Ver Demo",
     iconName: "home",
     iconSvg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
@@ -58,9 +60,10 @@ demoStatus: "ready",
     labelEs: "Sitio Web de Servicios de Limpieza",
     defaultService: "business-website",
     requestUrl: "./start-project/?industry=cleaning",
-    // TODO: Deploy Cleaning Services Website Demo and update this URL
-    demoUrl: "#",
-    demoStatus: "coming-soon",
+    demoUrl: "https://www.cleancareproservice.com/",
+    demoStatus: "ready",
+    demoLabelEn: "View Live Site",
+    demoLabelEs: "Ver Sitio Real",
     iconName: "star",
     iconSvg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
@@ -72,11 +75,12 @@ demoStatus: "ready",
     slug: "logistics",
     labelEn: "Logistics Website",
     labelEs: "Sitio Web de Logística",
-    defaultService: "dashboard",
+    defaultService: "website-seo",
     requestUrl: "./start-project/?industry=logistics",
-    // TODO: Deploy Logistics Website Demo and update this URL
-    demoUrl: "#",
-    demoStatus: "coming-soon",
+    demoUrl: "https://www.logisti-k.us/en",
+    demoStatus: "ready",
+    demoLabelEn: "View Live Site",
+    demoLabelEs: "Ver Sitio Real",
     iconName: "truck",
     iconSvg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <rect x="1" y="3" width="15" height="13"></rect>
@@ -85,7 +89,7 @@ demoStatus: "ready",
       <circle cx="18.5" cy="18.5" r="2.5"></circle>
     </svg>`,
     descEn: "Logistics website with shipment tracking, quote forms, service pages, and client trust sections.",
-    descEs: "Sitio web de logística con rastreo de envíos, cotizadores, páginas de servicios y secciones de credibilidad."
+    descEs: "Sitio web de logística con rastreo de envíos, formularios de cotización, páginas de servicios y secciones de confianza."
   },
   {
     slug: "saas",
