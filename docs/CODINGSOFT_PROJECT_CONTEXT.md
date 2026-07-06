@@ -21,8 +21,8 @@ The messaging focuses on delivering professional, robust, and clean technology s
 * **Spanish:** Sitios web. Automatización. Sistemas empresariales.
 
 ### Supporting Message
-* **English:** We build modern websites, automation workflows, and business systems that help companies operate, grow, and convert more customers.
-* **Spanish:** Creamos sitios web modernos, automatización y sistemas empresariales que ayudan a las empresas a operar, crecer y convertir más clientes.
+* **English:** We build high-converting websites, automation workflows, and custom business systems for real companies — from service businesses to industry-specific digital platforms.
+* **Spanish:** Creamos sitios web de alta conversión, automatizaciones y sistemas personalizados para negocios reales — desde empresas de servicios hasta plataformas digitales por industria.
 
 ---
 
@@ -295,3 +295,13 @@ If an unrecognized or invalid slug is passed to the start project page (e.g. `/s
 
 ### Educational Pricing Qualification Banners
 * **Implementation:** Trigger-matrix logic checks the combination of the selected service, budget, and timeline to dynamically display relevant educational warning banners. Only one warning is shown at a time based on a priority queue (urgent complex service takes precedence). Refer to full specifications in [banners-pricing-qualification-i18n.md](file:///Users/oscarmg/Desktop/codingsoft.github.io/docs/banners-pricing-qualification-i18n.md).
+
+## 22. Homepage Conversion & Navigation Improvements (Phase 2)
+The following user flow and structural improvements were implemented in Phase 2:
+* **Section Relocation:** Moved the "Industry Website Solutions" section higher on the homepage (directly below the company logo marquee and above the services section) to highlight customized vertical solutions immediately.
+* **Compact Navigation Dropdown:** Added a responsive, compact "Industries" (EN) / "Industrias" (ES) dropdown to the navbar that anchors scroll-targets directly to respective cards. Implemented a transparent pseudo-bridge element to prevent hover loss on desktop viewports.
+* **Direct CTA Linkage:** Re-routed primary commercial CTAs (header "Get A Quotation", footer contact links, and CTA banner buttons) to target `/start-project/` directly.
+* **Chatbot Isolation:** Restrained click listener interceptors in `main.js` to target only `.chat-trigger` classes. Main CTAs no longer trigger the chat popup.
+* **Real Estate Demo integration:** Connected the Real Estate "View Demo" card button directly to its deployed path: `https://codingsoft-demo-real-estate.vercel.app/`.
+* **Clearance Spacing:** Increased hero section top padding on desktop by 2rem (~32px) to give the Industries dropdown and menu dropdown cards extra breathing room and avoid visual collision with the hero badge or title. Mobile top padding remains separately optimized.
+

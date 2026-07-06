@@ -103,6 +103,19 @@
         </a>
 
         <div class="nav-links">
+          <div class="nav-dropdown">
+            <button class="nav-dropdown-trigger" aria-expanded="false" data-i18n="nav.industries">
+              Industries <span class="chevron">▼</span>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="#ind-real-estate" data-i18n="nav.ind_real_estate">Real Estate</a>
+              <a href="#ind-cleaning" data-i18n="nav.ind_cleaning">Cleaning Services</a>
+              <a href="#ind-logistics" data-i18n="nav.ind_logistics">Logistics</a>
+              <a href="#ind-construction" data-i18n="nav.ind_construction">Construction</a>
+              <a href="#ind-restaurant" data-i18n="nav.ind_restaurant">Restaurants</a>
+              <a href="#services" data-i18n="nav.ind_saas">SaaS / Business Systems</a>
+            </div>
+          </div>
           <a href="#services" data-i18n="nav.services">Services</a>
           <a href="#projects" data-i18n="nav.projects">Projects</a>
           <a href="#why-us" data-i18n="nav.company">Company</a>
@@ -113,10 +126,10 @@
             🇪🇸
           </button>
           <a
-            href="#contact"
+            href="./start-project/"
             class="btn btn-primary nav-quote-btn"
             data-i18n="nav.cta"
-            >Get A Quotation</a
+            >Get a Quote</a
           >
           <button class="mobile-menu-btn" aria-label="Toggle Menu">
             <span></span>
@@ -132,27 +145,38 @@
     <section class="hero" id="home">
       <div class="container">
         <div class="hero-content">
+          <!-- Optional badge above the headline -->
+          <div class="hero-badge reveal" data-i18n="hero.badge">
+            Custom Websites & Business Systems
+          </div>
+
           <h1 class="hero-title reveal">
             <span data-i18n="hero.title1">
-              Turn Business Ideas Into Operational Systems </span
+              Websites. Automation. </span
             ><br />
             <span class="text-gradient" data-i18n="hero.title_gradient">
-              AI-Powered Workflows & Platforms
+              Business Systems.
             </span>
           </h1>
 
           <p class="hero-subtitle reveal delay-1" data-i18n="hero.subtitle">
-            From automation and AI workflows to scalable platforms and APIs —
-            CodingSoft transforms ideas into real operational systems.
+            We build high-converting websites, automation workflows, and custom business systems for real companies — from service businesses to industry-specific digital platforms.
           </p>
 
           <div class="hero-actions reveal delay-2">
             <a
-              href="#contact"
+              href="./start-project/"
               class="btn btn-primary btn-lg glow"
-              data-i18n="hero.cta"
+              data-i18n="hero.cta_primary"
             >
-              Contact Us
+              Start Your Project
+            </a>
+            <a
+              href="#industry-solutions"
+              class="btn btn-outline btn-lg"
+              data-i18n="hero.cta_secondary"
+            >
+              View Website Demos
             </a>
           </div>
         </div>
@@ -353,6 +377,24 @@
               >
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Industry Website Solutions -->
+    <section class="industry-solutions bg-alt" id="industry-solutions">
+      <div class="container">
+        <div class="text-center mb-5 reveal">
+          <h2 class="section-title" data-i18n="industry.title">
+            Industry Website Solutions
+          </h2>
+          <p class="section-subtitle" data-i18n="industry.subtitle">
+            Explore ready-to-customize website demos built for real businesses.
+          </p>
+        </div>
+
+        <div class="industry-grid" id="industry-grid">
+          <!-- Dynamically populated from industries.config.js -->
         </div>
       </div>
     </section>
@@ -653,24 +695,6 @@
       </div>
     </section>
 
-    <!-- Industry Website Solutions -->
-    <section class="industry-solutions bg-alt" id="industry-solutions">
-      <div class="container">
-        <div class="text-center mb-5 reveal">
-          <h2 class="section-title" data-i18n="industry.title">
-            Industry Website Solutions
-          </h2>
-          <p class="section-subtitle" data-i18n="industry.subtitle">
-            Explore ready-to-customize website demos built for real businesses.
-          </p>
-        </div>
-
-        <div class="industry-grid" id="industry-grid">
-          <!-- Dynamically populated from industries.config.js -->
-        </div>
-      </div>
-    </section>
-
     <!-- Why Choose Us -->
     <section class="why-us" id="why-us">
       <div class="container">
@@ -949,7 +973,7 @@
               and our team will be happy to assist you.
             </p>
             <a
-              href="mailto:contactcodingsoft@gmail.com"
+              href="./start-project/"
               class="btn btn-primary btn-lg mt-3"
               data-i18n="cta.btn"
               >Contact Us</a
@@ -1054,7 +1078,7 @@
               <li><a href="#why-us" data-i18n="footer.about">About Us</a></li>
               <li><a href="#" data-i18n="footer.careers">Careers</a></li>
               <li>
-                <a href="#contact" data-i18n="footer.contact">Contact Us</a>
+                <a href="./start-project/" data-i18n="footer.contact">Contact Us</a>
               </li>
               <li><a href="#" data-i18n="footer.privacy">Privacy Policy</a></li>
             </ul>

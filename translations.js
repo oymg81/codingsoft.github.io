@@ -4,14 +4,24 @@ const translations = {
         "nav.services": "Services",
         "nav.projects": "Projects",
         "nav.company": "Company",
-        "nav.cta": "Get A Quotation",
+        "nav.cta": "Get a Quote",
+        "nav.industries": "Industries",
+        "nav.ind_real_estate": "Real Estate",
+        "nav.ind_cleaning": "Cleaning Services",
+        "nav.ind_logistics": "Logistics",
+        "nav.ind_construction": "Construction",
+        "nav.ind_restaurant": "Restaurants",
+        "nav.ind_saas": "SaaS / Business Systems",
 
         // Hero
+        "hero.badge": "Custom Websites & Business Systems",
         "hero.title1": "Websites. Automation.",
         "hero.title2": "",
         "hero.title_gradient": "Business Systems.",
-        "hero.subtitle": "We build modern websites, automation workflows, and business systems that help companies operate, grow, and convert more customers.",
+        "hero.subtitle": "We build high-converting websites, automation workflows, and custom business systems for real companies — from service businesses to industry-specific digital platforms.",
         "hero.cta": "Contact Us",
+        "hero.cta_primary": "Start Your Project",
+        "hero.cta_secondary": "View Website Demos",
 
         // Trusted By
         "trusted.title": "Trusted By Leading Companies",
@@ -188,13 +198,23 @@ const translations = {
         "nav.projects": "Proyectos",
         "nav.company": "Compañía",
         "nav.cta": "Pedir Presupuesto",
+        "nav.industries": "Industrias",
+        "nav.ind_real_estate": "Bienes Raíces",
+        "nav.ind_cleaning": "Servicios de Limpieza",
+        "nav.ind_logistics": "Logística",
+        "nav.ind_construction": "Construcción",
+        "nav.ind_restaurant": "Restaurantes",
+        "nav.ind_saas": "SaaS / Sistemas Empresariales",
 
         // Hero
+        "hero.badge": "Sitios web y sistemas para negocios",
         "hero.title1": "Sitios web. Automatización.",
         "hero.title2": "",
         "hero.title_gradient": "Sistemas empresariales.",
-        "hero.subtitle": "Creamos sitios web modernos, automatización y sistemas empresariales que ayudan a las empresas a operar, crecer y convertir más clientes.",
+        "hero.subtitle": "Creamos sitios web de alta conversión, automatizaciones y sistemas personalizados para negocios reales — desde empresas de servicios hasta plataformas digitales por industria.",
         "hero.cta": "Contáctanos",
+        "hero.cta_primary": "Comienza tu proyecto",
+        "hero.cta_secondary": "Ver demos de sitios web",
 
         // Trusted By
         "trusted.title": "Con La Confianza De Empresas Líderes",

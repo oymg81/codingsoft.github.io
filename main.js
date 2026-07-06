@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const demoBtnText = ind.demoStatus === 'ready' 
                 ? (isEn ? "View Demo" : "Ver Demo") 
                 : (isEn ? "Coming Soon" : "Próximamente");
-            const requestBtnText = isEn ? "Request This Website" : "Solicitar Este Sitio Web";
+            const requestBtnText = isEn ? "Start Similar Project" : "Iniciar Proyecto Similar";
 
             // Demo button tag and class
             const demoBtnClass = ind.demoStatus === 'ready' ? 'btn btn-demo' : 'btn btn-demo btn-disabled';
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const demoTag = ind.demoStatus === 'ready' ? 'a' : 'button';
 
             return `
-                <div class="industry-card reveal delay-${idx}">
+                <div class="industry-card reveal delay-${idx}" id="ind-${ind.slug}">
                     <div class="industry-icon">
                         ${ind.iconSvg}
                     </div>
@@ -193,8 +193,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 7. Chatbot Triggers
-    const chatbotTriggers = document.querySelectorAll('a[href="#contact"], a[href="mailto:contactcodingsoft@gmail.com"]');
+    // 7. Chatbot Triggers (restricted to explicit chat-trigger elements only)
+    const chatbotTriggers = document.querySelectorAll('.chat-trigger');
     chatbotTriggers.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -230,11 +230,31 @@ function initMobileMenu() {
   if (mobileMenuBtn.dataset.initialized === 'true') return;
   mobileMenuBtn.dataset.initialized = 'true';
 
+  // Mobile Dropdown Toggle
+  const dropdown = navLinks.querySelector('.nav-dropdown');
+  const dropdownTrigger = navLinks.querySelector('.nav-dropdown-trigger');
+
+  if (dropdown && dropdownTrigger) {
+    dropdownTrigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dropdown.classList.toggle('active');
+      const expanded = dropdown.classList.contains('active');
+      dropdownTrigger.setAttribute('aria-expanded', expanded);
+    });
+  }
+
   function closeMobileMenu() {
     mobileMenuBtn.classList.remove('active');
     navLinks.classList.remove('active');
     navActions.classList.remove('active');
     document.body.classList.remove('menu-open');
+    if (dropdown) {
+      dropdown.classList.remove('active');
+      if (dropdownTrigger) {
+        dropdownTrigger.setAttribute('aria-expanded', 'false');
+      }
+    }
   }
 
   function toggleMobileMenu() {
