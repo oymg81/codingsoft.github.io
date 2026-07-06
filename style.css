@@ -1192,6 +1192,17 @@ section {
   margin-bottom: 0;
 }
 
+.footer a,
+.contact-item a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer a:hover,
+.contact-item a:hover {
+  color: var(--cobalt-light);
+}
+
 .footer-bottom {
   display: flex;
   justify-content: space-between;
