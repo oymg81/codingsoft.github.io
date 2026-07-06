@@ -122,30 +122,70 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. Language Toggle
     const langToggleBtn = document.getElementById('lang-toggle');
-    let currentLang = 'en';
+    let currentLang = localStorage.getItem('lang') || 'en';
 
-    const savedLang = localStorage.getItem('lang');
+    function renderIndustryCards() {
+        const industryGrid = document.getElementById('industry-grid');
+        if (!industryGrid || !window.industriesConfig) return;
 
-    if (savedLang) {
-        setLanguage(savedLang);
+        const isEn = currentLang === 'en';
+        industryGrid.innerHTML = window.industriesConfig.map((ind, idx) => {
+            const title = isEn ? ind.labelEn : ind.labelEs;
+            const desc = isEn ? ind.descEn : ind.descEs;
+            
+            // Primary and Secondary actions according to CTA rules
+            const demoBtnText = ind.demoStatus === 'ready' 
+                ? (isEn ? "View Demo" : "Ver Demo") 
+                : (isEn ? "Coming Soon" : "Próximamente");
+            const requestBtnText = isEn ? "Request This Website" : "Solicitar Este Sitio Web";
+
+            // Demo button tag and class
+            const demoBtnClass = ind.demoStatus === 'ready' ? 'btn btn-demo' : 'btn btn-demo btn-disabled';
+            const demoAttr = ind.demoStatus === 'ready' ? `href="${ind.demoUrl || '#'}" target="_blank" rel="noopener noreferrer"` : 'disabled';
+            const demoTag = ind.demoStatus === 'ready' ? 'a' : 'button';
+
+            return `
+                <div class="industry-card reveal delay-${idx}">
+                    <div class="industry-icon">
+                        ${ind.iconSvg}
+                    </div>
+                    <h3>${title}</h3>
+                    <p>${desc}</p>
+                    <div class="industry-buttons">
+                        <${demoTag} ${demoAttr} class="${demoBtnClass}">${demoBtnText}</${demoTag}>
+                        <a href="${ind.requestUrl}" class="btn btn-github">${requestBtnText}</a>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        // Re-observe dynamic cards for scroll reveal animation
+        const newRevealElements = industryGrid.querySelectorAll('.reveal');
+        newRevealElements.forEach(el => {
+            revealOnScroll.observe(el);
+        });
     }
 
     function setLanguage(lang) {
         currentLang = lang;
-
         localStorage.setItem('lang', lang);
 
-        langToggleBtn.innerHTML = lang === 'en' ? '🇪🇸' : '🇺🇸';
+        if (langToggleBtn) {
+            langToggleBtn.innerHTML = lang === 'en' ? '🇪🇸' : '🇺🇸';
+        }
 
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
-            if (translations[lang][key]) {
+            if (translations[lang] && translations[lang][key]) {
                 el.textContent = translations[lang][key];
             }
         });
-        // Testimonial translations mapping is a bit more complex,
-        // we'll leave them in English for now or update the objects if we had them translated.
+        
+        // Render industry cards dynamically
+        renderIndustryCards();
     }
+
+    setLanguage(currentLang);
 
     if (langToggleBtn) {
         langToggleBtn.addEventListener('click', () => {
@@ -166,6 +206,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // 8. Developer Check: FOES Mention Protection
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        setTimeout(() => {
+            const bodyText = document.body.innerText || "";
+            if (bodyText.includes("FOES") || bodyText.toLowerCase().includes("foes")) {
+                console.error("DEVELOPER WARNING: The term 'FOES' was detected on this page. Please ensure FOES is not mentioned publicly yet according to project guidelines.");
+            }
+        }, 1000); // Check after dynamic populating completes
+    }
 });
 
 // 6. Mobile Menu Logic
