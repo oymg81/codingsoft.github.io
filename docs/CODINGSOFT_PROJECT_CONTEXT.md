@@ -281,9 +281,13 @@ If an unrecognized or invalid slug is passed to the start project page (e.g. `/s
 * **Friendly Notification:** A warning banner is displayed alerting the user in their active language: *"We could not recognize that industry. Please select the best option below."*
 
 ### Honeypot Anti-Spam Security
-* **Implementation:** A hidden honeypot input field (`website_confirm`) with strict CSS styling (`display: none; visibility: hidden;`) and keyboard indexing disabled (`tabindex="-1"`) is added inside the form markup to block automated bots.
-* **Spam Catching:** If a submission fills in the honeypot, the handler silently prevents processing/sending and presents a simulated success screen.
-* **TODO:** Configure server-side request verification of the honeypot field once email API logic is implemented.
+* **Implementation:** A hidden honeypot input field (`website_confirm`) with strict CSS styling (`display: none; visibility: hidden;`) and keyboard indexing disabled (`tabindex="-1`) is added inside the form markup to block automated bots.
+* **Spam Catching:** If a submission fills in the honeypot, the handler prevents sending and shows a spam detection error screen instead of faking success.
+
+### Email Delivery Integration (EmailJS)
+* **SDK Connection:** Integrated EmailJS browser SDK (via CDN) to route project inquiry submissions directly to `contact@codingsoft.tech` (managed via service `service_5639krm`).
+* **Complete Field Mapping:** Form submissions send 11 mapped parameters including user details, project selection, page URL, and user language.
+* **Error Handling & Configurations:** If the template ID is unconfigured, a clear developer warning is logged, and a user-friendly configuration message is rendered. Submission failures show a retry-friendly error card rather than fake successes.
 
 ### FOES Mention Protection Checks
 * **Local Alert Trigger:** Built-in dev check blocks within both `main.js` and `start-project/index.html` scan the text contents of the document on localhost environments.

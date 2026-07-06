@@ -324,6 +324,42 @@
         line-height: 1.6;
       }
 
+      /* Error Screen styling */
+      .error-card {
+        display: none;
+        text-align: center;
+        padding: 4rem 2rem;
+      }
+
+      .error-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: rgba(239, 68, 68, 0.1);
+        border: 2px solid rgba(239, 68, 68, 0.3);
+        color: #ef4444;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 2rem;
+        font-size: 2.5rem;
+      }
+
+      .error-card h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: var(--text-main);
+      }
+
+      .error-card p {
+        color: var(--text-muted);
+        max-width: 480px;
+        margin: 0 auto 2.5rem;
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+
       .saas-warning-box {
         background: rgba(245, 158, 11, 0.1);
         border: 1px solid rgba(245, 158, 11, 0.3);
@@ -615,6 +651,16 @@
               <a href="../" class="btn btn-primary glow" data-i18n="startproject.back_home">Back to Home</a>
             </div>
 
+            <!-- Error Card -->
+            <div class="form-card error-card" id="error-screen" style="display: none;">
+              <div class="error-icon">✗</div>
+              <h2 data-i18n="startproject.error">Submission Failed</h2>
+              <p id="error-screen-message" data-i18n="startproject.error_sub">
+                We encountered an issue submitting your inquiry. Please try again or contact us directly at contact@codingsoft.tech.
+              </p>
+              <button type="button" class="btn btn-primary glow" id="retry-btn" data-i18n="startproject.try_again">Try Again</button>
+            </div>
+
           </div>
 
         </div>
@@ -732,6 +778,7 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script src="../industries.config.js"></script>
     <script src="../translations.js"></script>
     <script>
@@ -944,24 +991,42 @@
         // Run checks initially
         evaluateBanners();
 
+        // EmailJS Configuration
+        const EMAILJS_PUBLIC_KEY = "Lgwtc4N0HsuCnzZfh";
+        const EMAILJS_SERVICE_ID = "service_5639krm";
+        const EMAILJS_TEMPLATE_ID = "template_bwpnupy";
+
         // Form submission handler
         const form = document.getElementById('project-inquiry-form');
         const formContainer = document.getElementById('project-form-container');
         const successScreen = document.getElementById('success-screen');
+        const errorScreen = document.getElementById('error-screen');
+        const errorScreenMessage = document.getElementById('error-screen-message');
+        const retryBtn = document.getElementById('retry-btn');
+
+        if (retryBtn) {
+          retryBtn.addEventListener('click', () => {
+            if (errorScreen) errorScreen.style.display = 'none';
+            if (formContainer) formContainer.style.display = 'block';
+          });
+        }
 
         if (form) {
-          form.addEventListener('submit', (e) => {
+          form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             // Honeypot spam check
             const honeypotVal = document.getElementById('website_confirm').value;
             if (honeypotVal) {
               console.warn('Spam submission detected via honeypot.');
-              // Show generic success screen without sending
-              if (formContainer && successScreen) {
+              // Do not send, do not show success screen, show warning/error message.
+              if (formContainer && errorScreen && errorScreenMessage) {
                 formContainer.style.display = 'none';
-                successScreen.style.display = 'block';
-                successScreen.scrollIntoView({ behavior: 'smooth' });
+                errorScreenMessage.textContent = currentLang === 'en'
+                  ? 'Spam submission detected.'
+                  : 'Envío de spam detectado.';
+                errorScreen.style.display = 'block';
+                errorScreen.scrollIntoView({ behavior: 'smooth' });
               }
               return;
             }
@@ -979,45 +1044,80 @@
               message: document.getElementById('message').value
             };
 
-            // Inquiries go to contact@codingsoft.tech
-            console.log('Sending project inquiry to contact@codingsoft.tech:', formData);
+            // Developer validation check
+            if (!EMAILJS_TEMPLATE_ID) {
+              console.warn(
+                'DEVELOPER WARNING: EmailJS Template ID is not configured.\n' +
+                'Please set a valid template ID in EMAILJS_TEMPLATE_ID at the top of the script inside start-project/index.html.\n' +
+                'Note: Ensure your EmailJS template routes submissions to contact@codingsoft.tech.'
+              );
+              if (formContainer && errorScreen && errorScreenMessage) {
+                formContainer.style.display = 'none';
+                errorScreenMessage.textContent = translations[currentLang] && translations[currentLang]['startproject.error_not_configured']
+                  ? translations[currentLang]['startproject.error_not_configured']
+                  : 'Form submission is not configured yet. Please try again later or contact support.';
+                errorScreen.style.display = 'block';
+                errorScreen.scrollIntoView({ behavior: 'smooth' });
+              }
+              return;
+            }
 
-            /**
-             * ==========================================
-             * TODO: Backend Integration / Email Sending
-             * ==========================================
-             * 
-             * This frontend form is currently fully functional and logs inquiries to the console.
-             * To route inquiries to contact@codingsoft.tech via email, configure one of the following:
-             * 
-             * 1. EmailJS (No-backend setup):
-             *    - Sign up at emailjs.com
-             *    - Import the library in the head using a script tag referencing the script URL:
-             *      https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js
-             *    - Initialize with public key: emailjs.init("YOUR_PUBLIC_KEY")
-             *    - Use emailjs.send("SERVICE_ID", "TEMPLATE_ID", formData) here.
-             * 
-             * 2. Resend (Server Action / API):
-             *    - Create a server action or API route in a next.js or node server:
-             *      import { Resend } from 'resend';
-             *      const resend = new Resend(process.env.RESEND_API_KEY);
-             *      await resend.emails.send({
-             *        from: 'CodingSoft Inquiries <inquiry@codingsoft.tech>',
-             *        to: 'contact@codingsoft.tech',
-             *        subject: `New Project Inquiry: \${formData.service}`,
-             *        html: `<p>Name: \${formData.name}</p>...`
-             *      });
-             * 
-             * 3. Custom Mail Server / Server Action Integration:
-             *    - Submit form data to your backend endpoint (e.g. POST /api/inquiry)
-             *      fetch('/api/inquiry', { method: 'POST', body: JSON.stringify(formData) })
-             */
+            // Show loading state on submit button
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalBtnText = submitBtn ? submitBtn.textContent : '';
+            if (submitBtn) {
+              submitBtn.disabled = true;
+              submitBtn.textContent = currentLang === 'en' ? 'Submitting...' : 'Enviando...';
+            }
 
-            // Show success animation/screen
-            if (formContainer && successScreen) {
-              formContainer.style.display = 'none';
-              successScreen.style.display = 'block';
-              successScreen.scrollIntoView({ behavior: 'smooth' });
+            // Map all 11 fields to template parameters
+            const templateParams = {
+              full_name: formData.name,
+              business_name: formData.businessName,
+              email: formData.email,
+              phone: formData.phone,
+              industry: formData.industry,
+              service_needed: formData.service,
+              budget: formData.budget,
+              timeline: formData.timeline,
+              message: formData.message,
+              page_url: window.location.href,
+              language: currentLang
+            };
+
+            try {
+              // Initialize EmailJS explicitly if needed
+              if (typeof emailjs !== 'undefined') {
+                emailjs.init(EMAILJS_PUBLIC_KEY);
+                const response = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+                console.log('✅ Project inquiry sent successfully to contact@codingsoft.tech', response);
+                
+                // Show success screen on success
+                if (formContainer && successScreen) {
+                  formContainer.style.display = 'none';
+                  successScreen.style.display = 'block';
+                  successScreen.scrollIntoView({ behavior: 'smooth' });
+                  form.reset();
+                }
+              } else {
+                throw new Error('EmailJS SDK not loaded.');
+              }
+            } catch (error) {
+              console.error('❌ Email submission error:', error);
+              // Show error screen on failure
+              if (formContainer && errorScreen && errorScreenMessage) {
+                formContainer.style.display = 'none';
+                errorScreenMessage.textContent = translations[currentLang] && translations[currentLang]['startproject.error_sub']
+                  ? translations[currentLang]['startproject.error_sub']
+                  : 'We encountered an issue submitting your inquiry. Please try again or contact us directly at contact@codingsoft.tech.';
+                errorScreen.style.display = 'block';
+                errorScreen.scrollIntoView({ behavior: 'smooth' });
+              }
+            } finally {
+              if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+              }
             }
           });
         }
