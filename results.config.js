@@ -1,6 +1,6 @@
-// TODO: FOES Reviews integration — fetch approved and featured reviews for workspace "codingsoft" from the FOES Reviews module once the public endpoint is finalized.
+// TODO: FOES Reviews integration — replace or supplement this static Client Results data with approved/featured reviews from the FOES Reviews module for workspace "codingsoft".
 
-window.resultsConfig = [
+window.clientResults = [
   {
     slug: "logistik",
     industryEn: "Logistics / Freight",

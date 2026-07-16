@@ -64,10 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. Client Results Section
     function renderClientResults() {
         const resultsGrid = document.getElementById('results-grid');
-        if (!resultsGrid || !window.resultsConfig) return;
+        if (!resultsGrid || !window.clientResults) return;
 
         const isEn = currentLang === 'en';
-        resultsGrid.innerHTML = window.resultsConfig.map((item, idx) => {
+        resultsGrid.innerHTML = window.clientResults.map((item, idx) => {
             const industry = isEn ? item.industryEn : item.industryEs;
             const title = isEn ? item.titleEn : item.titleEs;
             const desc = isEn ? item.descEn : item.descEs;
