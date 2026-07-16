@@ -64,7 +64,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. Client Results Section
     function renderClientResults() {
         const resultsGrid = document.getElementById('results-grid');
-        if (!resultsGrid || !window.clientResults) return;
+        if (!resultsGrid) {
+            console.warn("results-grid NOT found");
+            return;
+        }
+        console.log("results-grid found");
+
+        if (!window.clientResults) {
+            console.warn("window.clientResults is missing or undefined");
+            return;
+        }
+        console.log("clientResults count: " + window.clientResults.length);
 
         const isEn = currentLang === 'en';
         resultsGrid.innerHTML = window.clientResults.map((item, idx) => {
@@ -102,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         newRevealElements.forEach(el => {
             revealOnScroll.observe(el);
         });
+        console.log("Client Results rendered");
     }
 
     // 5. Language Toggle
