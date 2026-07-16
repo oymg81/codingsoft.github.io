@@ -107,6 +107,7 @@ const translations = {
         "footer.cookies": "Cookies Policy",
 
         // Start Project Page
+        "startproject.seo_title": "Start Your Project | CodingSoft Technology",
         "startproject.title": "Start Your Project",
         "startproject.subtitle": "Tell us what you need and we’ll review your project.",
         "startproject.trust_title": "Technology Built for Real Businesses.",
@@ -300,6 +301,7 @@ const translations = {
         "footer.cookies": "Política de Cookies",
 
         // Start Project Page (Spanish)
+        "startproject.seo_title": "Comienza tu proyecto | CodingSoft Technology",
         "startproject.title": "Comienza Tu Proyecto",
         "startproject.subtitle": "Cuéntanos lo que necesitas y revisaremos tu proyecto.",
         "startproject.trust_title": "Tecnología creada para negocios reales.",
