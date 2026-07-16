@@ -61,62 +61,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 4. Testimonial Slider
-    const nextBtn = document.querySelector('.slider-btn.next');
-    const prevBtn = document.querySelector('.slider-btn.prev');
-    const quoteText = document.querySelector('.quote-text');
-    const authorName = document.querySelector('.author-info h4');
-    const authorCompany = document.querySelector('.author-info p');
+    // 4. Client Results Section
+    function renderClientResults() {
+        const resultsGrid = document.getElementById('results-grid');
+        if (!resultsGrid || !window.resultsConfig) return;
 
-    const testimonials = [
-        {
-            text: `"Partnering with your team transformed our business. Their dedication, technical expertise, and creative solutions were beyond our expectations."`,
-            name: "Elenna Kusrov",
-            company: "MegaImpact Company"
-        },
-        {
-            text: `"CodingSoft didn't just build us a website; they built a scalable system that automated our workflow. Highly recommend their services."`,
-            name: "Marcus Thorne",
-            company: "TechNova Solutions"
-        },
-        {
-            text: `"The attention to detail and modern design approach completely elevated our brand. The return on investment has been incredible."`,
-            name: "Sarah Jenkins",
-            company: "Apex Retail Group"
-        }
-    ];
+        const isEn = currentLang === 'en';
+        resultsGrid.innerHTML = window.resultsConfig.map((item, idx) => {
+            const industry = isEn ? item.industryEn : item.industryEs;
+            const title = isEn ? item.titleEn : item.titleEs;
+            const desc = isEn ? item.descEn : item.descEs;
+            const ctaText = isEn ? item.ctaEn : item.ctaEs;
+            const ctaUrl = isEn ? item.urlEn : item.urlEs;
+            const deliveredItems = isEn ? item.deliveredEn : item.deliveredEs;
 
-    let currentTestimonial = 0;
+            const isExternal = ctaUrl.startsWith('http');
+            const targetAttr = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
 
-    function updateTestimonial() {
-        quoteText.style.opacity = 0;
-        authorName.style.opacity = 0;
-        authorCompany.style.opacity = 0;
+            const deliveredHtml = deliveredItems.map(d => `<span class="delivered-badge">${d}</span>`).join('');
 
-        setTimeout(() => {
-            quoteText.textContent = testimonials[currentTestimonial].text;
-            authorName.textContent = testimonials[currentTestimonial].name;
-            authorCompany.textContent = testimonials[currentTestimonial].company;
+            return `
+                <div class="result-card reveal delay-${idx}">
+                    <div class="result-card-header">
+                        <span class="result-industry">${industry}</span>
+                        <h3>${title}</h3>
+                    </div>
+                    <p class="result-description">${desc}</p>
+                    <div class="result-delivered">
+                        ${deliveredHtml}
+                    </div>
+                    <div class="result-actions">
+                        <a href="${ctaUrl}" ${targetAttr} class="btn btn-primary glow">${ctaText}</a>
+                    </div>
+                </div>
+            `;
+        }).join('');
 
-            quoteText.style.opacity = 1;
-            authorName.style.opacity = 1;
-            authorCompany.style.opacity = 1;
-
-            quoteText.style.transition = 'opacity 0.3s ease';
-            authorName.style.transition = 'opacity 0.3s ease';
-            authorCompany.style.transition = 'opacity 0.3s ease';
-        }, 300);
-    }
-
-    if (nextBtn && prevBtn) {
-        nextBtn.addEventListener('click', () => {
-            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-            updateTestimonial();
-        });
-
-        prevBtn.addEventListener('click', () => {
-            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
-            updateTestimonial();
+        // Observe new elements for reveal animation
+        const newRevealElements = resultsGrid.querySelectorAll('.reveal');
+        newRevealElements.forEach(el => {
+            revealOnScroll.observe(el);
         });
     }
 
@@ -184,6 +168,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Render industry cards dynamically
         renderIndustryCards();
+        
+        // Render client results dynamically
+        renderClientResults();
     }
 
     setLanguage(currentLang);

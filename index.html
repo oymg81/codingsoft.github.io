@@ -904,64 +904,19 @@
           </div>
         </div>
 
-        <!-- Testimonial Inline -->
-        <div class="testimonial-section mt-5 reveal">
-          <div class="testimonial-header">
-            <h2 class="section-title" data-i18n="testimonials.title">
-              Hear From Our Clients
+        <!-- Client Results Section -->
+        <div class="results-section mt-5 reveal">
+          <div class="results-header text-center mb-5">
+            <h2 class="section-title" data-i18n="results.title">
+              Client Results
             </h2>
-            <p class="section-subtitle" data-i18n="testimonials.subtitle">
-              Real stories. real impact. see why they trust us.
+            <p class="section-subtitle" data-i18n="results.subtitle">
+              Real websites, business systems, and automation built for service-based companies.
             </p>
-            <div class="slider-controls mt-2">
-              <button class="slider-btn prev" aria-label="Previous Testimonial">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  aria-hidden="true"
-                >
-                  <path d="M15 18l-6-6 6-6" />
-                </svg>
-              </button>
-              <button class="slider-btn next" aria-label="Next Testimonial">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  aria-hidden="true"
-                >
-                  <path d="M9 18l6-6-6-6" />
-                </svg>
-              </button>
-            </div>
           </div>
 
-          <div class="testimonial-card">
-            <div class="quote-icon">"</div>
-            <p class="quote-text">
-              "Partnering with your team transformed our business. Their
-              dedication, technical expertise, and creative solutions were
-              beyond our expectations."
-            </p>
-            <div class="quote-author">
-              <div class="author-avatar">
-                <img
-                  src="https://i.pravatar.cc/150?img=47"
-                  alt="Elenna Kusrov"
-                />
-              </div>
-              <div class="author-info">
-                <h3>Elenna Kusrov</h3>
-                <p>MegaImpact Company</p>
-              </div>
-            </div>
+          <div class="results-grid" id="results-grid">
+            <!-- Dynamically populated from results.config.js -->
           </div>
         </div>
       </div>
@@ -1262,6 +1217,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script src="industries.config.js"></script>
+    <script src="results.config.js"></script>
     <script src="translations.js"></script>
     <script src="main.js"></script>
     <script src="chat.js"></script>

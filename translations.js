@@ -69,9 +69,9 @@ const translations = {
         "whyus.card4.title": "Unwavering Support",
         "whyus.card4.desc": "From first consultation to post-launch maintenance, we're committed to your success every step of the way.",
 
-        // Testimonials
-        "testimonials.title": "Hear From Our Clients",
-        "testimonials.subtitle": "Real stories. real impact. see why they trust us.",
+        // Client Results
+        "results.title": "Client Results",
+        "results.subtitle": "Real websites, business systems, and automation built for service-based companies.",
 
         // FAQ
         "faq.label": "FAQs",
@@ -263,9 +263,9 @@ const translations = {
         "whyus.card4.title": "Soporte Inquebrantable",
         "whyus.card4.desc": "Desde la primera consulta hasta el mantenimiento post-lanzamiento, estamos comprometidos con tu éxito.",
 
-        // Testimonials
-        "testimonials.title": "Escucha A Nuestros Clientes",
-        "testimonials.subtitle": "Historias reales. Impacto real. Mira por qué confían en nosotros.",
+        // Client Results
+        "results.title": "Resultados de Clientes",
+        "results.subtitle": "Sitios web, sistemas y automatizaciones reales creados para negocios de servicios.",
 
         // FAQ
         "faq.label": "Preguntas Frecuentes",
