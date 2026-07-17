@@ -3,6 +3,7 @@
 window.clientResults = [
   {
     slug: "logistik",
+    type: "live-site",
     industryEn: "Logistics / Freight",
     industryEs: "Logística / Transporte",
     titleEn: "Logisti-K Freight Services",
@@ -18,6 +19,7 @@ window.clientResults = [
   },
   {
     slug: "cleancare",
+    type: "live-site",
     industryEn: "Cleaning Services",
     industryEs: "Servicios de Limpieza",
     titleEn: "CleanCare Pro Service",
@@ -33,6 +35,7 @@ window.clientResults = [
   },
   {
     slug: "lidia",
+    type: "case-study",
     industryEn: "Cleaning Services",
     industryEs: "Servicios de Limpieza",
     titleEn: "Lidia Cleaning Services",
@@ -48,6 +51,7 @@ window.clientResults = [
   },
   {
     slug: "realestate",
+    type: "demo",
     industryEn: "Real Estate",
     industryEs: "Bienes Raíces",
     titleEn: "Real Estate Website Demo",

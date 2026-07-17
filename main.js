@@ -88,6 +88,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const isExternal = ctaUrl.startsWith('http');
             const targetAttr = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
 
+            let btnClass = "result-btn result-btn-primary";
+            if (item.type === "live-site") {
+                btnClass = "result-btn result-btn-glass";
+            }
+
             const deliveredHtml = deliveredItems.map(d => `<span class="delivered-badge">${d}</span>`).join('');
 
             return `
@@ -101,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${deliveredHtml}
                     </div>
                     <div class="result-actions">
-                        <a href="${ctaUrl}" ${targetAttr} class="btn btn-primary glow">${ctaText}</a>
+                        <a href="${ctaUrl}" ${targetAttr} class="${btnClass}">${ctaText}</a>
                     </div>
                 </div>
             `;
