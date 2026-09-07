@@ -132,29 +132,61 @@ document.addEventListener('DOMContentLoaded', () => {
         industryGrid.innerHTML = window.industriesConfig.map((ind, idx) => {
             const title = isEn ? ind.labelEn : ind.labelEs;
             const desc = isEn ? ind.descEn : ind.descEs;
+            const isReady = ind.demoStatus === 'ready';
             
             // Primary and Secondary actions according to CTA rules
             const customDemoLabel = isEn ? ind.demoLabelEn : ind.demoLabelEs;
-            const demoBtnText = ind.demoStatus === 'ready' 
+            const demoBtnText = isReady 
                 ? (customDemoLabel || (isEn ? "View Demo" : "Ver Demo")) 
                 : (isEn ? "Coming Soon" : "Próximamente");
             const requestBtnText = isEn ? "Start Similar Project" : "Iniciar Proyecto Similar";
 
-            // Demo button tag and class
-            const demoBtnClass = ind.demoStatus === 'ready' ? 'btn btn-demo' : 'btn btn-demo btn-disabled';
-            const demoAttr = ind.demoStatus === 'ready' ? `href="${ind.demoUrl || '#'}" target="_blank" rel="noopener noreferrer"` : 'disabled';
-            const demoTag = ind.demoStatus === 'ready' ? 'a' : 'button';
+            // Status badge text
+            const statusBadgeText = isReady
+                ? (isEn ? "Live Demo" : "Demo en Vivo")
+                : (isEn ? "In Development" : "En Desarrollo");
+            const statusBadgeClass = isReady ? "status-ready" : "status-soon";
+
+            // Arrow icon SVG for active links
+            const externalIcon = `<svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>`;
+            const arrowIcon = `<svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>`;
+
+            // Buttons according to demo status
+            const buttonsHtml = isReady
+                ? `
+                    <a href="${ind.demoUrl || '#'}" target="_blank" rel="noopener noreferrer" class="btn btn-demo btn-industry-primary">
+                        <span>${demoBtnText}</span>
+                        ${externalIcon}
+                    </a>
+                    <a href="${ind.requestUrl}" class="btn btn-github btn-industry-secondary">
+                        <span>${requestBtnText}</span>
+                    </a>
+                `
+                : `
+                    <button disabled class="btn btn-demo btn-disabled btn-industry-disabled">
+                        <span>${demoBtnText}</span>
+                    </button>
+                    <a href="${ind.requestUrl}" class="btn btn-demo btn-industry-primary">
+                        <span>${requestBtnText}</span>
+                        ${arrowIcon}
+                    </a>
+                `;
 
             return `
                 <div class="industry-card reveal delay-${idx}" id="ind-${ind.slug}">
-                    <div class="industry-icon">
-                        ${ind.iconSvg}
+                    <div class="industry-card-header">
+                        <div class="industry-icon">
+                            ${ind.iconSvg}
+                        </div>
+                        <span class="industry-status-badge ${statusBadgeClass}">
+                            <span class="status-pulse-dot"></span>
+                            <span>${statusBadgeText}</span>
+                        </span>
                     </div>
                     <h3>${title}</h3>
                     <p>${desc}</p>
                     <div class="industry-buttons">
-                        <${demoTag} ${demoAttr} class="${demoBtnClass}">${demoBtnText}</${demoTag}>
-                        <a href="${ind.requestUrl}" class="btn btn-github">${requestBtnText}</a>
+                        ${buttonsHtml}
                     </div>
                 </div>
             `;

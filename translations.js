@@ -177,10 +177,15 @@ const translations = {
         "startproject.opt_time4": "Flexible (2+ months)",
 
         // Industry Solutions
+        "industry.badge": "Industry Demos",
         "industry.title": "Industry Website Solutions",
         "industry.subtitle": "Explore ready-to-customize website demos built for real businesses.",
         "industry.view_demo": "View Demo",
+        "industry.view_live": "View Live Site",
         "industry.coming_soon": "Coming Soon",
+        "industry.live_demo": "Live Demo",
+        "industry.in_development": "In Development",
+        "industry.start_project": "Start Similar Project",
         "industry.request_website": "Request This Website",
         "industry.card1.title": "Real Estate Websites",
         "industry.card1.desc": "Premium websites for realtors, brokers, and property professionals.",
@@ -371,10 +376,15 @@ const translations = {
         "startproject.opt_time4": "Flexible (2+ meses)",
 
         // Industry Solutions
+        "industry.badge": "Demos por Industria",
         "industry.title": "Soluciones Web por Industria",
         "industry.subtitle": "Explora demos profesionales listas para personalizar según tu negocio.",
         "industry.view_demo": "Ver Demo",
+        "industry.view_live": "Ver Sitio Real",
         "industry.coming_soon": "Próximamente",
+        "industry.live_demo": "Demo en Vivo",
+        "industry.in_development": "En Desarrollo",
+        "industry.start_project": "Iniciar Proyecto Similar",
         "industry.request_website": "Solicitar Este Sitio Web",
         "industry.card1.title": "Sitios web para Real Estate",
         "industry.card1.desc": "Sitios web premium para realtors, brokers y profesionales inmobiliarios.",
