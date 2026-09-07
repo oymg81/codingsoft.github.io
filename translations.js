@@ -70,7 +70,7 @@ const translations = {
         "whyus.card4.desc": "From first consultation to post-launch maintenance, we're committed to your success every step of the way.",
 
         // Client Results
-        "results.title": "Client Results",
+        "results.title": "Featured Work & Results",
         "results.subtitle": "Real websites, business systems, and automation built for service-based companies.",
 
         // FAQ
@@ -269,7 +269,7 @@ const translations = {
         "whyus.card4.desc": "Desde la primera consulta hasta el mantenimiento post-lanzamiento, estamos comprometidos con tu éxito.",
 
         // Client Results
-        "results.title": "Resultados de Clientes",
+        "results.title": "Proyectos Destacados y Resultados",
         "results.subtitle": "Sitios web, sistemas y automatizaciones reales creados para negocios de servicios.",
 
         // FAQ
