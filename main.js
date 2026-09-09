@@ -84,29 +84,42 @@ document.addEventListener('DOMContentLoaded', () => {
             const ctaText = isEn ? item.ctaEn : item.ctaEs;
             const ctaUrl = isEn ? item.urlEn : item.urlEs;
             const deliveredItems = isEn ? item.deliveredEn : item.deliveredEs;
+            const badgeText = isEn ? (item.badgeEn || "Live Site") : (item.badgeEs || "Sitio en Vivo");
 
             const isExternal = ctaUrl.startsWith('http');
             const targetAttr = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
 
-            let btnClass = "result-btn result-btn-primary";
-            if (item.type === "live-site") {
-                btnClass = "result-btn result-btn-glass";
-            }
+            const externalIcon = `<svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>`;
+            const arrowIcon = `<svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>`;
+            const btnIcon = isExternal ? externalIcon : arrowIcon;
 
             const deliveredHtml = deliveredItems.map(d => `<span class="delivered-badge">${d}</span>`).join('');
+
+            const defaultIcon = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`;
+            const iconContent = item.iconSvg || item.icon || defaultIcon;
 
             return `
                 <div class="result-card reveal delay-${idx}">
                     <div class="result-card-header">
-                        <span class="result-industry">${industry}</span>
-                        <h3>${title}</h3>
+                        <div class="result-icon">
+                            ${iconContent}
+                        </div>
+                        <span class="result-status-badge status-ready">
+                            <span class="status-pulse-dot"></span>
+                            <span>${badgeText}</span>
+                        </span>
                     </div>
+                    <span class="result-industry">${industry}</span>
+                    <h3>${title}</h3>
                     <p class="result-description">${desc}</p>
                     <div class="result-delivered">
                         ${deliveredHtml}
                     </div>
                     <div class="result-actions">
-                        <a href="${ctaUrl}" ${targetAttr} class="${btnClass}">${ctaText}</a>
+                        <a href="${ctaUrl}" ${targetAttr} class="btn btn-demo btn-industry-primary">
+                            <span>${ctaText}</span>
+                            ${btnIcon}
+                        </a>
                     </div>
                 </div>
             `;
@@ -210,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) {
-                el.textContent = translations[lang][key];
+                el.innerHTML = translations[lang][key];
             }
         });
         

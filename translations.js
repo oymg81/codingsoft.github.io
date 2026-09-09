@@ -27,7 +27,7 @@ const translations = {
         "trusted.title": "Trusted By Leading Companies",
 
         // Services
-        "services.title": "Our services",
+        "services.title": "Our <span>Services</span>",
         "services.subtitle": "Delivering high-quality solutions that empower businesses",
         "services.learn_more": "Learn More",
         "services.card1.title": "Business Automation",
@@ -40,13 +40,13 @@ const translations = {
         "services.card4.desc": "Seamlessly connect your CRM, accounting, and marketing tools into one unified system.",
 
         // Projects
-        "projects.title": "Our Projects",
+        "projects.title": "Our <span>Projects</span>",
         "projects.subtitle": "See how we bring ideas to life and discover what we can create for you.",
         "projects.view_all": "View Projects",
 
         // Process
         "process.label": "How We Work",
-        "process.title": "Our Process",
+        "process.title": "Our <span>Process</span>",
         "process.subtitle": "A transparent, results-driven approach to building your system.",
         "process.step1.title": "Discovery & Strategy",
         "process.step1.desc": "We analyze your business needs, bottlenecks, and goals to propose the perfect technical solution.",
@@ -58,7 +58,7 @@ const translations = {
         "process.step4.desc": "We deploy the system, provide training, and offer ongoing support to ensure everything runs smoothly.",
 
         // Why Us
-        "whyus.title": "Why Choose Us",
+        "whyus.title": "Why <span>Choose Us</span>",
         "whyus.subtitle": "Technology Built for Real Businesses.",
         "whyus.card1.title": "Expertise That Delivers",
         "whyus.card1.desc": "Our seasoned developers and consultants bring years of real-world experience to every project.",
@@ -70,12 +70,12 @@ const translations = {
         "whyus.card4.desc": "From first consultation to post-launch maintenance, we're committed to your success every step of the way.",
 
         // Client Results
-        "results.title": "Featured Work & Results",
+        "results.title": "Featured Work <span>& Results</span>",
         "results.subtitle": "Real websites, business systems, and automation built for service-based companies.",
 
         // FAQ
         "faq.label": "FAQs",
-        "faq.title": "We Have All The Answers",
+        "faq.title": "We Have All The <span>Answers</span>",
         "faq.subtitle": "Find answers to the most common questions about our services, pricing, and processes.",
         "faq.q1": "What industries do you specialize in?",
         "faq.a1": "We build modern websites, automation workflows, and business systems that help companies operate, grow, and convert more customers across multiple industries (including tech, finance, healthcare, retail, and construction).",
@@ -89,7 +89,7 @@ const translations = {
         "faq.a5": "Yes, we provide full training and documentation for all custom systems we build to ensure your team can use them effectively.",
 
         // CTA
-        "cta.title": "Start Building Your Business System Today",
+        "cta.title": "Start Building Your Business <span>System Today</span>",
         "cta.desc": "Looking for expert advice or a custom solution? Send us a message, and our team will be happy to assist you.",
         "cta.btn": "Contact Us",
 
@@ -178,7 +178,7 @@ const translations = {
 
         // Industry Solutions
         "industry.badge": "Industry Demos",
-        "industry.title": "Industry Website Solutions",
+        "industry.title": "Industry Website <span>Solutions</span>",
         "industry.subtitle": "Explore ready-to-customize website demos built for real businesses.",
         "industry.view_demo": "View Demo",
         "industry.view_live": "View Live Site",
@@ -226,7 +226,7 @@ const translations = {
         "trusted.title": "Con La Confianza De Empresas Líderes",
 
         // Services
-        "services.title": "Nuestros servicios",
+        "services.title": "Nuestros <span>Servicios</span>",
         "services.subtitle": "Entregando soluciones de alta calidad que potencian a las empresas",
         "services.learn_more": "Saber Más",
         "services.card1.title": "Automatización de Negocios",
@@ -239,13 +239,13 @@ const translations = {
         "services.card4.desc": "Conecta sin problemas tu CRM, contabilidad y herramientas de marketing en un sistema unificado.",
 
         // Projects
-        "projects.title": "Nuestros Proyectos",
+        "projects.title": "Nuestros <span>Proyectos</span>",
         "projects.subtitle": "Mira cómo damos vida a las ideas y descubre lo que podemos crear para ti.",
         "projects.view_all": "Ver Proyectos",
 
         // Process
         "process.label": "Cómo Trabajamos",
-        "process.title": "Nuestro Proceso",
+        "process.title": "Nuestro <span>Proceso</span>",
         "process.subtitle": "Un enfoque transparente y orientado a resultados para construir tu sistema.",
         "process.step1.title": "Descubrimiento y Estrategia",
         "process.step1.desc": "Analizamos las necesidades de tu negocio, cuellos de botella y objetivos para proponer la solución técnica perfecta.",
@@ -257,7 +257,7 @@ const translations = {
         "process.step4.desc": "Desplegamos el sistema, brindamos capacitación y ofrecemos soporte continuo para garantizar que todo funcione sin problemas.",
 
         // Why Us
-        "whyus.title": "Por Qué Elegirnos",
+        "whyus.title": "Por Qué <span>Elegirnos</span>",
         "whyus.subtitle": "Tecnología creada para negocios reales.",
         "whyus.card1.title": "Experiencia Que Cumple",
         "whyus.card1.desc": "Nuestros desarrolladores y consultores experimentados aportan años de experiencia en el mundo real a cada proyecto.",
@@ -269,12 +269,12 @@ const translations = {
         "whyus.card4.desc": "Desde la primera consulta hasta el mantenimiento post-lanzamiento, estamos comprometidos con tu éxito.",
 
         // Client Results
-        "results.title": "Proyectos Destacados y Resultados",
+        "results.title": "Proyectos Destacados <span>y Resultados</span>",
         "results.subtitle": "Sitios web, sistemas y automatizaciones reales creados para negocios de servicios.",
 
         // FAQ
         "faq.label": "Preguntas Frecuentes",
-        "faq.title": "Tenemos Todas Las Respuestas",
+        "faq.title": "Tenemos Todas Las <span>Respuestas</span>",
         "faq.subtitle": "Encuentra respuestas a las preguntas más comunes sobre nuestros servicios, precios y procesos.",
         "faq.q1": "¿En qué industrias se especializan?",
         "faq.a1": "Creamos sitios web modernos, automatización y sistemas de negocio que ayudan a las empresas a operar, crecer y convertir más clientes en múltiples industrias (incluyendo tecnología, finanzas, salud, comercio y construcción).",
@@ -288,7 +288,7 @@ const translations = {
         "faq.a5": "Sí, proporcionamos capacitación completa y documentación para todos los sistemas que construimos.",
 
         // CTA
-        "cta.title": "Empieza a Construir tu Sistema Hoy",
+        "cta.title": "Empieza a Construir tu <span>Sistema Hoy</span>",
         "cta.desc": "¿Buscas asesoramiento experto o una solución personalizada? Envíanos un mensaje y nuestro equipo te ayudará.",
         "cta.btn": "Contáctanos",
 
@@ -377,7 +377,7 @@ const translations = {
 
         // Industry Solutions
         "industry.badge": "Demos por Industria",
-        "industry.title": "Soluciones Web por Industria",
+        "industry.title": "Soluciones Web por <span>Industria</span>",
         "industry.subtitle": "Explora demos profesionales listas para personalizar según tu negocio.",
         "industry.view_demo": "Ver Demo",
         "industry.view_live": "Ver Sitio Real",
