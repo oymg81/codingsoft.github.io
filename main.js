@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
     // TODO:
     // Google Business Profile reviews should sync server-side into FOES.
-    // CodingSoft should consume only the public approved-review endpoint.
+    // CodingSoft should consume only approved/featured reviews from the public FOES reviews endpoint.
     // Endpoint: GET https://app.foes.pro/api/public/reviews?workspace=codingsoft
     let currentReviewsData = [];
     let currentSlideIndex = 0;
