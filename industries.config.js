@@ -92,10 +92,28 @@ const industriesConfig = [
     descEs: "Sitio web de logística con rastreo de envíos, formularios de cotización, páginas de servicios y secciones de confianza."
   },
   {
+    slug: "spa",
+    labelEn: "Spa & Beauty Website",
+    labelEs: "Sitio Web de Spa y Belleza",
+    defaultService: "website-seo",
+    requestUrl: "./start-project/?industry=spa",
+    // TODO: Deploy Spa & Beauty Website Demo and update this URL
+    demoUrl: "#",
+    demoStatus: "coming-soon",
+    iconName: "smile",
+    iconSvg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2a10 10 0 1 0 10 10H12V2z"></path>
+      <path d="M12 12 2.1 10.5"></path>
+      <path d="M12 12l4-8"></path>
+    </svg>`,
+    descEn: "Spa and beauty website with service menus, client booking, WhatsApp inquiries, and review showcases.",
+    descEs: "Sitio web para spa y estética con catálogo de tratamientos, reservas en línea, WhatsApp y reseñas."
+  },
+  {
     slug: "saas",
     labelEn: "SaaS / Business Dashboard",
     labelEs: "SaaS / Dashboard de Negocios",
-    defaultService: "business-dashboard",
+    defaultService: "dashboard",
     requestUrl: "./start-project/?industry=other",
     // TODO: Deploy SaaS / Business Dashboard Demo and update this URL
     demoUrl: "#",

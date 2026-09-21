@@ -573,6 +573,7 @@
                       <option value="restaurant" data-i18n="startproject.opt_restaurant">Restaurant</option>
                       <option value="cleaning" data-i18n="startproject.opt_cleaning">Cleaning</option>
                       <option value="logistics" data-i18n="startproject.opt_logistics">Logistics</option>
+                      <option value="spa" data-i18n="startproject.opt_spa">Spa & Beauty</option>
                       <option value="other" data-i18n="startproject.opt_other">Other</option>
                     </select>
                   </div>
@@ -981,6 +982,23 @@
         // Prepopulate select options based on URL query parameter
         const urlParams = new URLSearchParams(window.location.search);
         const urlIndustry = urlParams.get('industry');
+        const urlService = urlParams.get('service');
+
+        // Map friendly service query slugs to form service values
+        const serviceSlugMap = {
+          'web-development': 'business-website',
+          'business-website': 'business-website',
+          'landing-page': 'landing-page',
+          'website-seo': 'website-seo',
+          'business-automation': 'automation',
+          'automation': 'automation',
+          'dashboard-development': 'dashboard',
+          'dashboard': 'dashboard',
+          'custom-software': 'custom-web',
+          'custom-web': 'custom-web',
+          'saas-development': 'saas-mvp',
+          'saas-mvp': 'saas-mvp'
+        };
 
         if (urlIndustry) {
           const formattedIndustry = urlIndustry.toLowerCase().trim();
@@ -994,10 +1012,25 @@
             }
             if (invalidWarning) invalidWarning.style.display = 'none';
           } else {
-            // Keep empty and show warning box
-            if (industrySelect) industrySelect.value = '';
-            if (serviceSelect) serviceSelect.value = '';
-            if (invalidWarning) invalidWarning.style.display = 'flex';
+            // Check direct option value in case of custom industry like 'other'
+            const exists = Array.from(industrySelect.options).some(opt => opt.value === formattedIndustry);
+            if (exists) {
+              industrySelect.value = formattedIndustry;
+              if (invalidWarning) invalidWarning.style.display = 'none';
+            } else {
+              // Keep empty and show warning box
+              if (industrySelect) industrySelect.value = '';
+              if (invalidWarning) invalidWarning.style.display = 'flex';
+            }
+          }
+        }
+
+        if (urlService) {
+          const formattedService = urlService.toLowerCase().trim();
+          const mappedValue = serviceSlugMap[formattedService] || formattedService;
+          const serviceExists = Array.from(serviceSelect.options).some(opt => opt.value === mappedValue);
+          if (serviceExists && serviceSelect) {
+            serviceSelect.value = mappedValue;
           }
         }
 

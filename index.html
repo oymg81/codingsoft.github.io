@@ -198,12 +198,13 @@
               Industries <span class="chevron">▼</span>
             </button>
             <div class="nav-dropdown-menu">
-              <a href="#ind-real-estate" data-i18n="nav.ind_real_estate">Real Estate</a>
-              <a href="#ind-cleaning" data-i18n="nav.ind_cleaning">Cleaning Services</a>
-              <a href="#ind-logistics" data-i18n="nav.ind_logistics">Logistics</a>
-              <a href="#ind-construction" data-i18n="nav.ind_construction">Construction</a>
-              <a href="#ind-restaurant" data-i18n="nav.ind_restaurant">Restaurants</a>
-              <a href="#services" data-i18n="nav.ind_saas">SaaS / Business Systems</a>
+              <a href="./industries/real-estate-websites/" data-i18n="nav.ind_real_estate">Real Estate</a>
+              <a href="./industries/cleaning-service-websites/" data-i18n="nav.ind_cleaning">Cleaning Services</a>
+              <a href="./industries/logistics-websites/" data-i18n="nav.ind_logistics">Logistics</a>
+              <a href="./industries/construction-websites/" data-i18n="nav.ind_construction">Construction</a>
+              <a href="./industries/restaurant-websites/" data-i18n="nav.ind_restaurant">Restaurants</a>
+              <a href="./industries/spa-beauty-websites/" data-i18n="industry.card6.title">Spa & Beauty</a>
+              <a href="./services/saas-development/" data-i18n="nav.ind_saas">SaaS / Business Systems</a>
             </div>
           </div>
           <a href="#services" data-i18n="nav.services">Services</a>
@@ -530,39 +531,48 @@
               Streamline workflows and eliminate manual tasks with custom
               software built for efficiency.
             </p>
+            <a href="./services/business-automation/" class="btn-text-link mt-3" style="color: var(--cyan-accent); font-size: 0.9rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;">
+              <span>Explore Automation</span> →
+            </a>
           </div>
 
           <div class="service-card reveal delay-1">
             <div class="service-icon-wrapper">
               <div class="icon-3d shape-sphere"></div>
             </div>
-            <h3 data-i18n="services.card2.title">Custom Web Apps</h3>
+            <h3 data-i18n="services.card2.title">Websites & Booking Systems</h3>
             <p data-i18n="services.card2.desc">
-              Full-cycle development of responsive, scalable, and feature-rich
-              applications for enterprise.
+              Custom-built, high-converting websites with integrated scheduling and booking capabilities.
             </p>
+            <a href="./services/web-development/" class="btn-text-link mt-3" style="color: var(--cyan-accent); font-size: 0.9rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;">
+              <span>Web Development</span> →
+            </a>
           </div>
 
           <div class="service-card reveal delay-2">
             <div class="service-icon-wrapper">
               <div class="icon-3d shape-cube"></div>
             </div>
-            <h3 data-i18n="services.card3.title">AI-Powered Tools</h3>
+            <h3 data-i18n="services.card3.title">Dashboards & Portals</h3>
             <p data-i18n="services.card3.desc">
-              Integrate cutting-edge artificial intelligence into your business
-              processes for smarter operations.
+              Secure client portals and internal dashboards to give you full visibility over your business metrics.
             </p>
+            <a href="./services/dashboard-development/" class="btn-text-link mt-3" style="color: var(--cyan-accent); font-size: 0.9rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;">
+              <span>Dashboard Development</span> →
+            </a>
           </div>
 
           <div class="service-card reveal delay-3">
             <div class="service-icon-wrapper">
               <div class="icon-3d shape-octahedron"></div>
             </div>
-            <h3 data-i18n="services.card4.title">Systems Integration</h3>
+            <h3 data-i18n="services.card4.title">Custom Software & SaaS</h3>
             <p data-i18n="services.card4.desc">
-              Connect your disparate tools and data sources into a single,
-              cohesive business ecosystem.
+              Tailored web applications, API integrations, and scalable platforms engineered for growth.
             </p>
+            <a href="./services/custom-software/" class="btn-text-link mt-3" style="color: var(--cyan-accent); font-size: 0.9rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;">
+              <span>Custom Software</span> →
+            </a>
           </div>
         </div>
       </div>
@@ -950,6 +960,47 @@
       </div>
     </section>
 
+    <!-- Reviews Carousel Section -->
+    <section class="reviews-section" id="reviews-section">
+      <div class="container">
+        <div class="text-center mb-5 reveal">
+          <div class="google-rating-badge">
+            <svg class="google-icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2a10 10 0 1 0 10 10H12V2z"></path>
+            </svg>
+            <span class="rating-stars-gold">★★★★★</span>
+            <span data-i18n="reviews.rating">5.0 Rating • Verified Clients</span>
+          </div>
+          <h2 class="section-title" data-i18n="reviews.title">
+            Client Feedback <span>& Reviews</span>
+          </h2>
+          <p class="section-subtitle" data-i18n="reviews.subtitle">
+            See what business owners say about building websites and digital systems with CodingSoft.
+          </p>
+        </div>
+
+        <div class="reviews-carousel-wrapper">
+          <button class="carousel-nav-btn carousel-nav-prev" id="carousel-prev" aria-label="Previous review">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+
+          <div class="reviews-viewport">
+            <div class="reviews-track" id="reviews-track" tabindex="0" role="region" aria-label="Client reviews carousel">
+              <!-- Dynamically populated from reviews.config.js / FOES API -->
+            </div>
+          </div>
+
+          <button class="carousel-nav-btn carousel-nav-next" id="carousel-next" aria-label="Next review">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+
+        <div class="carousel-dots" id="carousel-dots" role="tablist" aria-label="Reviews pagination">
+          <!-- Dynamic dots -->
+        </div>
+      </div>
+    </section>
+
     <!-- FAQ -->
     <section class="faq" id="faq">
       <div class="container">
@@ -969,15 +1020,13 @@
             <div class="accordion-item active">
               <button class="accordion-header">
                 <span data-i18n="faq.q1"
-                  >What industries do you specialize in?</span
+                  >How much does a business website or software project cost?</span
                 >
                 <span class="icon">-</span>
               </button>
               <div class="accordion-content" style="max-height: 200px">
                 <p data-i18n="faq.a1">
-                  We work across multiple industries including tech, finance,
-                  healthcare, and retail. Our systems are adaptable to any
-                  business process.
+                  Costs depend on scope and functionality. Standard high-converting service websites typically range from $1,500 to $4,500, while custom automation workflows, business dashboards, and full software applications range from $5,000 to $25,000+. We provide transparent, fixed-scope proposals tailored to your goals.
                 </p>
               </div>
             </div>
@@ -985,15 +1034,13 @@
             <div class="accordion-item">
               <button class="accordion-header">
                 <span data-i18n="faq.q2"
-                  >Do you offer post-launch support?</span
+                  >How long does a website or software project take?</span
                 >
                 <span class="icon">+</span>
               </button>
               <div class="accordion-content">
                 <p data-i18n="faq.a2">
-                  Yes, we offer comprehensive maintenance and support packages
-                  to ensure your systems remain secure, up-to-date, and fully
-                  functional.
+                  A standard business website typically takes 2 to 4 weeks from discovery to launch. Custom software, dashboards, and automated business workflows generally take 4 to 8 weeks depending on integration complexity.
                 </p>
               </div>
             </div>
@@ -1001,15 +1048,13 @@
             <div class="accordion-item">
               <button class="accordion-header">
                 <span data-i18n="faq.q3"
-                  >How long does a typical project take?</span
+                  >Do you build bilingual (English & Spanish) websites?</span
                 >
                 <span class="icon">+</span>
               </button>
               <div class="accordion-content">
                 <p data-i18n="faq.a3">
-                  Project timelines vary depending on scope and complexity. A
-                  standard web application typically takes 8-12 weeks from
-                  discovery to launch.
+                  Yes! Bilingual web development is one of our primary strengths. We build seamless English and Spanish experiences with localized content, meta tags, and conversion funnels to help you reach wider markets.
                 </p>
               </div>
             </div>
@@ -1017,15 +1062,13 @@
             <div class="accordion-item">
               <button class="accordion-header">
                 <span data-i18n="faq.q4"
-                  >Can you work with our in-house team?</span
+                  >Can you connect WhatsApp, booking systems, or business dashboards?</span
                 >
                 <span class="icon">+</span>
               </button>
               <div class="accordion-content">
                 <p data-i18n="faq.a4">
-                  Absolutely. We frequently collaborate with internal IT and
-                  development teams to augment capabilities and accelerate
-                  delivery.
+                  Absolutely. We routinely integrate direct WhatsApp ordering/chat buttons, appointment scheduling (Calendly, Square, custom), CRM lead routing, and real-time business performance dashboards.
                 </p>
               </div>
             </div>
@@ -1033,14 +1076,27 @@
             <div class="accordion-item">
               <button class="accordion-header">
                 <span data-i18n="faq.q5"
-                  >Do you provide onboarding assistance?</span
+                  >Do you build custom software, portals, and workflow automation?</span
                 >
                 <span class="icon">+</span>
               </button>
               <div class="accordion-content">
                 <p data-i18n="faq.a5">
-                  Yes, we provide full training and documentation for all custom
-                  systems we build to ensure your team can use them effectively.
+                  Yes. Beyond websites, we engineer custom internal business tools, client portals, automated billing/invoicing flows, database-backed web applications, and scalable SaaS platforms.
+                </p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span data-i18n="faq.q6"
+                  >Do you work with cleaning, logistics, real estate, construction, and restaurant businesses?</span
+                >
+                <span class="icon">+</span>
+              </button>
+              <div class="accordion-content">
+                <p data-i18n="faq.a6">
+                  Yes. We have specialized, conversion-tested industry solutions and live platforms built specifically for cleaning services, freight/logistics, real estate agents, contractors, restaurants, and beauty clinics.
                 </p>
               </div>
             </div>
@@ -1158,11 +1214,25 @@
           </div>
 
           <div class="footer-links">
-            <h3 data-i18n="footer.quick_links">Quick links</h3>
+            <h3 data-i18n="footer.quick_links">Services</h3>
             <ul>
-              <li><a href="#services" data-i18n="nav.services">Services</a></li>
-              <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
-              <li><a href="#" data-i18n="footer.blog">Blog</a></li>
+              <li><a href="./services/web-development/">Web Development</a></li>
+              <li><a href="./services/business-automation/">Business Automation</a></li>
+              <li><a href="./services/custom-software/">Custom Software</a></li>
+              <li><a href="./services/saas-development/">SaaS Platforms</a></li>
+              <li><a href="./services/dashboard-development/">Business Dashboards</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-links">
+            <h3 data-i18n="nav.industries">Industries</h3>
+            <ul>
+              <li><a href="./industries/real-estate-websites/">Real Estate</a></li>
+              <li><a href="./industries/cleaning-service-websites/">Cleaning Services</a></li>
+              <li><a href="./industries/logistics-websites/">Logistics & Freight</a></li>
+              <li><a href="./industries/construction-websites/">Construction</a></li>
+              <li><a href="./industries/restaurant-websites/">Restaurants</a></li>
+              <li><a href="./industries/spa-beauty-websites/">Spa & Beauty</a></li>
             </ul>
           </div>
 
@@ -1170,11 +1240,8 @@
             <h3 data-i18n="footer.company">Company</h3>
             <ul>
               <li><a href="#why-us" data-i18n="footer.about">About Us</a></li>
-              <li><a href="#" data-i18n="footer.careers">Careers</a></li>
-              <li>
-                <a href="./start-project/" data-i18n="footer.contact">Contact Us</a>
-              </li>
-              <li><a href="#" data-i18n="footer.privacy">Privacy Policy</a></li>
+              <li><a href="./start-project/" data-i18n="footer.contact">Contact Us</a></li>
+              <li><a href="./start-project/" data-i18n="nav.cta">Start a Project</a></li>
             </ul>
           </div>
 
@@ -1246,6 +1313,7 @@
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script src="industries.config.js"></script>
     <script src="results.config.js"></script>
+    <script src="reviews.config.js"></script>
     <script src="translations.js"></script>
     <script src="main.js"></script>
     <script src="chat.js"></script>

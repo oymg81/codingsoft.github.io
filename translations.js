@@ -73,20 +73,30 @@ const translations = {
         "results.title": "Featured Work <span>& Results</span>",
         "results.subtitle": "Real websites, business systems, and automation built for service-based companies.",
 
+        // Reviews Carousel
+        "reviews.badge": "Google Reviews",
+        "reviews.rating": "5.0 Rating • Verified Clients",
+        "reviews.title": "Client Feedback <span>& Reviews</span>",
+        "reviews.subtitle": "See what business owners say about building websites and digital systems with CodingSoft.",
+        "reviews.prev_btn": "Previous review",
+        "reviews.next_btn": "Next review",
+
         // FAQ
         "faq.label": "FAQs",
         "faq.title": "We Have All The <span>Answers</span>",
         "faq.subtitle": "Find answers to the most common questions about our services, pricing, and processes.",
-        "faq.q1": "What industries do you specialize in?",
-        "faq.a1": "We build modern websites, automation workflows, and business systems that help companies operate, grow, and convert more customers across multiple industries (including tech, finance, healthcare, retail, and construction).",
-        "faq.q2": "Do you offer post-launch support?",
-        "faq.a2": "Yes, we offer comprehensive maintenance and support packages to ensure your systems remain secure, up-to-date, and fully functional.",
-        "faq.q3": "How long does a typical project take?",
-        "faq.a3": "Project timelines vary depending on scope and complexity. A standard web application typically takes 8-12 weeks from discovery to launch.",
-        "faq.q4": "Can you work with our in-house team?",
-        "faq.a4": "Absolutely. We frequently collaborate with internal IT and development teams to augment capabilities and accelerate delivery.",
-        "faq.q5": "Do you provide onboarding assistance?",
-        "faq.a5": "Yes, we provide full training and documentation for all custom systems we build to ensure your team can use them effectively.",
+        "faq.q1": "How much does a business website or software project cost?",
+        "faq.a1": "Costs depend on scope and functionality. Standard high-converting service websites typically range from $1,500 to $4,500, while custom automation workflows, business dashboards, and full software applications range from $5,000 to $25,000+. We provide transparent, fixed-scope proposals tailored to your goals.",
+        "faq.q2": "How long does a website or software project take?",
+        "faq.a2": "A standard business website typically takes 2 to 4 weeks from discovery to launch. Custom software, dashboards, and automated business workflows generally take 4 to 8 weeks depending on integration complexity.",
+        "faq.q3": "Do you build bilingual (English & Spanish) websites?",
+        "faq.a3": "Yes! Bilingual web development is one of our primary strengths. We build seamless English and Spanish experiences with localized content, meta tags, and conversion funnels to help you reach wider markets.",
+        "faq.q4": "Can you connect WhatsApp, booking systems, or business dashboards?",
+        "faq.a4": "Absolutely. We routinely integrate direct WhatsApp ordering/chat buttons, appointment scheduling (Calendly, Square, custom), CRM lead routing, and real-time business performance dashboards.",
+        "faq.q5": "Do you build custom software, portals, and workflow automation?",
+        "faq.a5": "Yes. Beyond websites, we engineer custom internal business tools, client portals, automated billing/invoicing flows, database-backed web applications, and scalable SaaS platforms.",
+        "faq.q6": "Do you work with cleaning, logistics, real estate, construction, and restaurant businesses?",
+        "faq.a6": "Yes. We have specialized, conversion-tested industry solutions and live platforms built specifically for cleaning services, freight/logistics, real estate agents, contractors, restaurants, and beauty clinics.",
 
         // CTA
         "cta.title": "Start Building Your Business <span>System Today</span>",
@@ -152,6 +162,7 @@ const translations = {
         "startproject.opt_restaurant": "Restaurant",
         "startproject.opt_cleaning": "Cleaning",
         "startproject.opt_logistics": "Logistics",
+        "startproject.opt_spa": "Spa & Beauty",
         "startproject.opt_other": "Other",
         "startproject.opt_service_select": "Select Service Needed",
         "startproject.opt_service1": "Landing Page",
@@ -196,7 +207,9 @@ const translations = {
         "industry.card4.title": "Cleaning Services Websites",
         "industry.card4.desc": "Conversion-focused websites for residential, commercial, and Airbnb cleaning businesses.",
         "industry.card5.title": "Logistics Websites",
-        "industry.card5.desc": "Websites and digital systems for freight, cargo, tracking, and logistics companies."
+        "industry.card5.desc": "Websites and digital systems for freight, cargo, tracking, and logistics companies.",
+        "industry.card6.title": "Spa & Beauty Websites",
+        "industry.card6.desc": "Booking-driven websites for salons, spas, aesthetic clinics, and beauty professionals."
     },
     es: {
         // Nav
@@ -272,20 +285,30 @@ const translations = {
         "results.title": "Proyectos Destacados <span>y Resultados</span>",
         "results.subtitle": "Sitios web, sistemas y automatizaciones reales creados para negocios de servicios.",
 
-        // FAQ
+        // Reviews Carousel (Spanish)
+        "reviews.badge": "Reseñas de Google",
+        "reviews.rating": "Calificación 5.0 • Clientes Verificados",
+        "reviews.title": "Opiniones <span>y Reseñas</span>",
+        "reviews.subtitle": "Lo que dicen los dueños de negocios sobre crear sitios web y sistemas con CodingSoft.",
+        "reviews.prev_btn": "Reseña anterior",
+        "reviews.next_btn": "Siguiente reseña",
+
+        // FAQ (Spanish)
         "faq.label": "Preguntas Frecuentes",
         "faq.title": "Tenemos Todas Las <span>Respuestas</span>",
         "faq.subtitle": "Encuentra respuestas a las preguntas más comunes sobre nuestros servicios, precios y procesos.",
-        "faq.q1": "¿En qué industrias se especializan?",
-        "faq.a1": "Creamos sitios web modernos, automatización y sistemas de negocio que ayudan a las empresas a operar, crecer y convertir más clientes en múltiples industrias (incluyendo tecnología, finanzas, salud, comercio y construcción).",
-        "faq.q2": "¿Ofrecen soporte después del lanzamiento?",
-        "faq.a2": "Sí, ofrecemos paquetes integrales de mantenimiento y soporte para asegurar que tus sistemas permanezcan seguros y actualizados.",
-        "faq.q3": "¿Cuánto dura un proyecto típico?",
-        "faq.a3": "Los tiempos varían según el alcance. Una aplicación web estándar típicamente toma de 8 a 12 semanas.",
-        "faq.q4": "¿Pueden trabajar con nuestro equipo interno?",
-        "faq.a4": "Absolutamente. Frecuentemente colaboramos con equipos internos de TI para aumentar capacidades y acelerar entregas.",
-        "faq.q5": "¿Proporcionan asistencia de integración?",
-        "faq.a5": "Sí, proporcionamos capacitación completa y documentación para todos los sistemas que construimos.",
+        "faq.q1": "¿Cuánto cuesta un sitio web o proyecto de software empresarial?",
+        "faq.a1": "Los costos varían según el alcance y la funcionalidad. Los sitios web estándar de alta conversión típicamente van de $1,500 a $4,500, mientras que las automatizaciones personalizadas, dashboards y aplicaciones de software completas van de $5,000 a $25,000+. Ofrecemos propuestas transparentes y detalladas adaptadas a tus metas.",
+        "faq.q2": "¿Cuánto tiempo toma un proyecto de sitio web o software?",
+        "faq.a2": "Un sitio web empresarial estándar típicamente toma de 2 a 4 semanas desde el análisis inicial hasta el lanzamiento. Software personalizado, dashboards y flujos de automatización generalmente toman de 4 a 8 semanas según la complejidad de integración.",
+        "faq.q3": "¿Crean sitios web bilingües (inglés y español)?",
+        "faq.a3": "¡Sí! El desarrollo web bilingüe es una de nuestras principales especialidades. Diseñamos experiencias fluidas en inglés y español con contenidos localizados, metadatos y embudos de conversión para ayudarte a captar más clientes.",
+        "faq.q4": "¿Pueden conectar WhatsApp, sistemas de reservas o dashboards de negocio?",
+        "faq.a4": "Totalmente. Integramos botones directos de WhatsApp para pedidos y consultas, sistemas de reservas (Calendly, Square o personalizados), enrutamiento de prospectos al CRM y dashboards en tiempo real para monitorear tu negocio.",
+        "faq.q5": "¿Desarrollan software personalizado, portales y automatización de flujos?",
+        "faq.a5": "Sí. Más allá de páginas web, programamos herramientas internas, portales de clientes, automatización de facturación y cobros, aplicaciones basadas en bases de datos y plataformas SaaS escalables.",
+        "faq.q6": "¿Trabajan con negocios de limpieza, logística, bienes raíces, construcción y restaurantes?",
+        "faq.a6": "Sí. Contamos con soluciones especializadas y plataformas activas para empresas de limpieza, transporte/logística, agencias inmobiliarias, contratistas, restaurantes y centros de estética.",
 
         // CTA
         "cta.title": "Empieza a Construir tu <span>Sistema Hoy</span>",
@@ -351,6 +374,7 @@ const translations = {
         "startproject.opt_restaurant": "Restaurante / Gastronomía",
         "startproject.opt_cleaning": "Limpieza (Cleaning)",
         "startproject.opt_logistics": "Logística",
+        "startproject.opt_spa": "Spa y Belleza",
         "startproject.opt_other": "Otro",
         "startproject.opt_service_select": "Seleccionar Servicio Requerido",
         "startproject.opt_service1": "Landing Page",
@@ -395,6 +419,8 @@ const translations = {
         "industry.card4.title": "Sitios web para Cleaning Services",
         "industry.card4.desc": "Sitios web enfocados en conversión para limpieza residencial, comercial y Airbnb.",
         "industry.card5.title": "Sitios web para Logística",
-        "industry.card5.desc": "Sitios web y sistemas digitales para freight, cargo, tracking y empresas logísticas."
+        "industry.card5.desc": "Sitios web y sistemas digitales para freight, cargo, tracking y empresas logísticas.",
+        "industry.card6.title": "Sitios web para Spa y Belleza",
+        "industry.card6.desc": "Sitios web orientados a reservas para spas, salones, clínicas estéticas y profesionales de belleza."
     }
 };

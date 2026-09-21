@@ -212,6 +212,202 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // =========================================================================
+    // 6. Reviews Carousel System
+    // =========================================================================
+    // TODO:
+    // Google Business Profile reviews should sync server-side into FOES.
+    // CodingSoft should consume only the public approved-review endpoint.
+    // Endpoint: GET https://app.foes.pro/api/public/reviews?workspace=codingsoft
+    let currentReviewsData = [];
+    let currentSlideIndex = 0;
+    let maxSlides = 0;
+
+    async function loadReviews() {
+        // Preferred architecture: attempt future FOES API, fallback gracefully to approved local config
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 2000);
+
+            // Attempt fetch from future public FOES reviews endpoint
+            const res = await fetch('https://app.foes.pro/api/public/reviews?workspace=codingsoft', {
+                signal: controller.signal,
+                headers: { 'Accept': 'application/json' }
+            });
+            clearTimeout(timeoutId);
+
+            if (res.ok) {
+                const data = await res.json();
+                if (Array.isArray(data) && data.length > 0) {
+                    currentReviewsData = data;
+                    renderReviews(currentReviewsData);
+                    return;
+                }
+            }
+        } catch (e) {
+            // Graceful fallback to static approved local config without breaking homepage
+        }
+
+        // Fallback to approved local reviews config
+        if (window.codingsoftReviews && Array.isArray(window.codingsoftReviews) && window.codingsoftReviews.length > 0) {
+            currentReviewsData = window.codingsoftReviews;
+            renderReviews(currentReviewsData);
+        } else {
+            // Hide reviews section if no approved reviews are available
+            const reviewsSection = document.getElementById('reviews-section');
+            if (reviewsSection) {
+                reviewsSection.style.display = 'none';
+            }
+        }
+    }
+
+    function renderReviews(reviews) {
+        const track = document.getElementById('reviews-track');
+        const dotsContainer = document.getElementById('carousel-dots');
+        const section = document.getElementById('reviews-section');
+        if (!track || !reviews || reviews.length === 0) {
+            if (section) section.style.display = 'none';
+            return;
+        }
+
+        if (section) section.style.display = 'block';
+
+        track.innerHTML = reviews.map(item => {
+            const initial = item.author ? item.author.charAt(0).toUpperCase() : 'C';
+            const starsHtml = '★'.repeat(item.rating || 5);
+            const sourceLabel = item.source || 'Google';
+
+            return `
+                <div class="review-card" tabindex="0" role="group" aria-label="Review by ${item.author}">
+                    <div>
+                        <div class="review-card-header">
+                            <div class="review-stars" aria-label="${item.rating || 5} out of 5 stars">${starsHtml}</div>
+                            <span class="review-source-tag">
+                                <svg class="google-icon-svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M12 2a10 10 0 1 0 10 10H12V2z"></path>
+                                </svg>
+                                <span>${sourceLabel}</span>
+                            </span>
+                        </div>
+                        <p class="review-text">${item.text}</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="review-avatar" aria-hidden="true">${initial}</div>
+                        <div class="review-author-info">
+                            <span class="review-author-name">${item.author}</span>
+                            <span class="review-author-company">${item.company || 'Verified Client'}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        setupCarouselControls();
+    }
+
+    function setupCarouselControls() {
+        const track = document.getElementById('reviews-track');
+        const prevBtn = document.getElementById('carousel-prev');
+        const nextBtn = document.getElementById('carousel-next');
+        const dotsContainer = document.getElementById('carousel-dots');
+        if (!track) return;
+
+        const cards = track.querySelectorAll('.review-card');
+        const totalCards = cards.length;
+        const isMobile = window.innerWidth <= 900;
+        const visiblePerSlide = isMobile ? 1 : 2;
+        maxSlides = Math.max(1, totalCards - visiblePerSlide + 1);
+
+        if (currentSlideIndex >= maxSlides) {
+            currentSlideIndex = maxSlides - 1;
+        }
+
+        // Render Pagination Dots
+        if (dotsContainer) {
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < maxSlides; i++) {
+                const dot = document.createElement('button');
+                dot.className = `carousel-dot ${i === currentSlideIndex ? 'active' : ''}`;
+                dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                dot.addEventListener('click', () => {
+                    goToSlide(i);
+                });
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function updateCarouselPosition() {
+            const cardWidth = cards[0] ? cards[0].offsetWidth : 0;
+            const gap = 24; // 1.5rem in px
+            const offset = currentSlideIndex * (cardWidth + gap);
+            track.style.transform = `translateX(-${offset}px)`;
+
+            // Update buttons
+            if (prevBtn) prevBtn.disabled = currentSlideIndex === 0;
+            if (nextBtn) nextBtn.disabled = currentSlideIndex >= maxSlides - 1;
+
+            // Update dots
+            if (dotsContainer) {
+                const dots = dotsContainer.querySelectorAll('.carousel-dot');
+                dots.forEach((dot, idx) => {
+                    dot.classList.toggle('active', idx === currentSlideIndex);
+                });
+            }
+        }
+
+        function goToSlide(index) {
+            currentSlideIndex = Math.max(0, Math.min(index, maxSlides - 1));
+            updateCarouselPosition();
+        }
+
+        if (prevBtn) {
+            prevBtn.onclick = () => goToSlide(currentSlideIndex - 1);
+        }
+        if (nextBtn) {
+            nextBtn.onclick = () => goToSlide(currentSlideIndex + 1);
+        }
+
+        // Keyboard accessibility on track
+        track.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                goToSlide(currentSlideIndex - 1);
+            } else if (e.key === 'ArrowRight') {
+                goToSlide(currentSlideIndex + 1);
+            }
+        });
+
+        // Touch / Swipe handling
+        let startX = 0;
+        let isDragging = false;
+
+        track.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        }, { passive: true });
+
+        track.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            const endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+            if (Math.abs(diff) > 40) {
+                if (diff > 0) {
+                    goToSlide(currentSlideIndex + 1);
+                } else {
+                    goToSlide(currentSlideIndex - 1);
+                }
+            }
+            isDragging = false;
+        }, { passive: true });
+
+        updateCarouselPosition();
+    }
+
+    window.addEventListener('resize', () => {
+        if (currentReviewsData.length > 0) {
+            setupCarouselControls();
+        }
+    });
+
     function setLanguage(lang) {
         currentLang = lang;
         localStorage.setItem('lang', lang);
@@ -232,9 +428,16 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Render client results dynamically
         renderClientResults();
+
+        // Render reviews
+        if (currentReviewsData.length > 0) {
+            renderReviews(currentReviewsData);
+        }
     }
 
+    // Initial load
     setLanguage(currentLang);
+    loadReviews();
 
     if (langToggleBtn) {
         langToggleBtn.addEventListener('click', () => {
