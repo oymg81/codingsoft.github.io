@@ -2697,3 +2697,275 @@ section {
     padding: 3rem 1.5rem;
   }
 }
+
+/* ==========================================================================
+   NFC Tap Digital Business Card (/tap/)
+   ========================================================================== */
+body.tap-page {
+  background: radial-gradient(circle at 50% 15%, rgba(37, 99, 235, 0.24), transparent 45%),
+              linear-gradient(180deg, #020617 0%, #071225 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem 2rem 1rem;
+  overflow-x: hidden;
+}
+
+.tap-wrapper {
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Header & Language Toggle */
+.tap-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.tap-lang-toggle {
+  display: inline-flex;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: 9999px;
+  padding: 3px;
+  gap: 2px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  margin-left: auto;
+}
+
+.tap-lang-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: var(--transition);
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tap-lang-btn:hover {
+  color: #ffffff;
+}
+
+.tap-lang-btn.active {
+  background: var(--cobalt);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 71, 255, 0.4);
+}
+
+.tap-lang-btn:focus-visible {
+  outline: 2px solid var(--cyan-accent);
+  outline-offset: 2px;
+}
+
+/* Profile Card */
+.tap-card {
+  background: rgba(10, 16, 36, 0.75);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 24px;
+  padding: 2.25rem 1.5rem 1.75rem 1.5rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5),
+              0 0 30px rgba(37, 99, 235, 0.15);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tap-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.75rem;
+}
+
+.tap-logo-ring {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.25), rgba(0, 71, 255, 0.1));
+  border: 1.5px solid rgba(56, 189, 248, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 20px rgba(0, 71, 255, 0.3);
+}
+
+.tap-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.35rem;
+}
+
+.tap-tagline {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--cyan-accent);
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.tap-description {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  max-width: 360px;
+}
+
+/* Action Stack */
+.tap-actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.tap-btn {
+  width: 100%;
+  min-height: 54px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+  padding: 0.85rem 1.25rem;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: none;
+  text-align: center;
+}
+
+.tap-btn svg {
+  flex-shrink: 0;
+}
+
+/* Primary CTA - Google Review */
+.tap-btn-primary {
+  background: linear-gradient(135deg, #0047ff 0%, #2563eb 100%);
+  color: #ffffff;
+  border: 1px solid rgba(147, 197, 253, 0.3);
+  box-shadow: 0 8px 25px rgba(0, 71, 255, 0.4),
+              0 0 15px rgba(56, 189, 248, 0.2);
+}
+
+.tap-btn-primary:hover,
+.tap-btn-primary:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 71, 255, 0.5),
+              0 0 20px rgba(56, 189, 248, 0.4);
+  color: #ffffff;
+}
+
+/* Secondary Actions */
+.tap-btn-whatsapp {
+  background: rgba(37, 211, 102, 0.12);
+  color: #25d366;
+  border: 1px solid rgba(37, 211, 102, 0.35);
+}
+
+.tap-btn-whatsapp:hover,
+.tap-btn-whatsapp:focus-visible {
+  background: rgba(37, 211, 102, 0.22);
+  border-color: rgba(37, 211, 102, 0.6);
+  transform: translateY(-2px);
+  color: #25d366;
+}
+
+.tap-btn-secondary {
+  background: rgba(255, 255, 255, 0.04);
+  color: #ffffff;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  backdrop-filter: blur(8px);
+}
+
+.tap-btn-secondary:hover,
+.tap-btn-secondary:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(56, 189, 248, 0.5);
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+.tap-btn:focus-visible {
+  outline: 2px solid var(--cyan-accent);
+  outline-offset: 3px;
+}
+
+/* Secondary Social Icons Row */
+.tap-socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+}
+
+.tap-social-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.tap-social-icon:hover,
+.tap-social-icon:focus-visible {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--cyan-accent);
+  border-color: var(--cyan-accent);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+/* Footer Credits */
+.tap-footer {
+  text-align: center;
+  font-size: 0.78rem;
+  color: rgba(184, 194, 216, 0.6);
+  padding: 0.5rem 0;
+}
+
+.tap-footer a {
+  color: rgba(184, 194, 216, 0.8);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.tap-footer a:hover {
+  color: var(--cyan-accent);
+}
