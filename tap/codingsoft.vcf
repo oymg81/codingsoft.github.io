@@ -1,9 +1,11 @@
 BEGIN:VCARD
 VERSION:3.0
-FN:CodingSoft Technology
+N:Mochizaki;Oscar;;;
+FN:Oscar Mochizaki
 ORG:CodingSoft Technology
-TITLE:Software Development, Automation & Business Systems
-TEL;TYPE=CELL:+17863096588
-EMAIL;TYPE=INTERNET:contactcodingsoft@gmail.com
+TITLE:Founder & Software Engineer
+TEL;TYPE=CELL:+19544877605
+TEL;TYPE=WORK,VOICE:+17863096588
+EMAIL;TYPE=WORK:oscar@codingsoft.tech
 URL:https://www.codingsoft.tech/
 END:VCARD

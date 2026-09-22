@@ -10,7 +10,8 @@
       btnWhatsapp: "Chat on WhatsApp",
       btnWebsite: "Visit Website",
       btnSave: "Save Contact",
-      btnEmail: "Email",
+      btnCall: "Call CodingSoft",
+      btnEmail: "Email Oscar",
       waMsg: "Hi CodingSoft, I’d like more information about your services."
     },
     es: {
@@ -21,7 +22,8 @@
       btnWhatsapp: "Hablar por WhatsApp",
       btnWebsite: "Visitar Sitio Web",
       btnSave: "Guardar Contacto",
-      btnEmail: "Correo",
+      btnCall: "Llamar a CodingSoft",
+      btnEmail: "Correo a Oscar",
       waMsg: "Hola CodingSoft, quisiera más información sobre sus servicios."
     }
   };
@@ -48,7 +50,7 @@
     var waBtn = document.getElementById('tap-wa-btn');
     if (waBtn) {
       var msg = translations[lang].waMsg;
-      waBtn.href = 'https://wa.me/17863096588?text=' + encodeURIComponent(msg);
+      waBtn.href = 'https://wa.me/19544877605?text=' + encodeURIComponent(msg);
     }
 
     var langBtns = document.querySelectorAll('[data-lang-btn]');
